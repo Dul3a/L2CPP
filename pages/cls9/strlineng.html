@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Learn Programming! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <ul>
+        <li><a class="logo-link" href="../../indexeng.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../indexeng.html"> Home </a></li>
+        <li><a href="../../pages/class9.html"> 9th Grade </a></li>
+        <li><a href="../../pages/class10.html"> 10th Grade </a></li>
+        <li><a href="../../pages/programaeng.html"> Curriculum </a></li>
+        <li><a href="../../pages/testeng.html"> Test </a></li>
+        <li><a href="../../pagini/cls9/strlin.html"> RO </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Basic Elements of C++ Language</button>
+          <div class="panel">
+            <a href="../../pages/class9.html"><button class="submenu-btn">Introduction to C++</button></a>
+            <a href="tipdataeng.html"><button class="submenu-btn">Data Types in C++</button></a>
+            <a href="inouteng.html"><button class="submenu-btn">Input and Output in C++</button></a>
+            <a href="operatorieng.html"><button class="submenu-btn">C++ Operators</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Control Structures</button>
+          <div class="panel">
+            <a href="strlineng.html"><button class="submenu-btn">Linear Structures</button></a>
+            <a href="stralteng.html"><button class="submenu-btn">Alternative Structures</button></a>
+            <a href="strrepeng.html"><button class="submenu-btn">Repetitive Structures</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Arrays</button>
+          <div class="panel">
+            <a href="decparceng.html"><button class="submenu-btn">Declaration and Traversal of One-Dimensional Arrays</button></a>
+            <a href="steinseng.html"><button class="submenu-btn">Insertions and Deletions of Elements</button></a>
+            <a href="verifeng.html"><button class="submenu-btn">Checking Properties</button></a>
+            <a href="sorteng.html"><button class="submenu-btn">Sorting Arrays</button></a>
+            <a href="frecveng.html"><button class="submenu-btn">Characteristics and Frequency Arrays</button></a>
+          </div>
+        </div>
+      </div>
+
+    <div class="inner">
+      <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Linear Structure</h1><br><br>
+      <p>The linear structure is represented by instructions that execute in the same way every time the program (or program segment) is run, regardless of the values of the variables being used.</p><br>
+      <h2>Expression Statement</h2>
+      <p>The expression statement is the most frequently used type of statement in a C++ program. An expression becomes a statement if it is followed by "<b>;</b>".
+      <br><br>Examples:</p>
+      <pre><code class="language-cpp">x = 2;
+x++;
+cout << x;</code></pre><br>
+
+      <h2>Declaration Statement</h2>
+      <p>A declaration statement can declare identifiers of a certain type. Identifiers can be variables, but as we will see later, they can also be functions.
+      <br><br>Examples:</p>
+      <pre><code class="language-cpp">int x, y , z;
+double a;</code></pre><br>
+
+      <h2>Compound Statement</h2>
+      <p>The compound statement, or block, is a grouping of declarations and statements enclosed between curly braces {}. They were introduced to use multiple statements where the syntax requires a single statement. The compound statement or block is syntactically equivalent to a single statement.
+        The block also determines a scope for the identifiers. More precisely, identifiers declared in a block will be removed when the block is terminated. 
+        <br>After the closing curly brace } do not write ";"!
+        <br><br>Example:</p>
+      <pre><code class="language-cpp">#include <iostream>
+using namespace std;
+int main()
+{
+      int x = 5;
+      {
+          int x = 7;
+          cout << x << endl; // 7 will be displayed
+      }
+      cout << x << endl; // 5 will be displayed
+      return 0;
+}</code></pre><br>
+      
+      <h2>Return Statement</h2>
+      <p>A <b>return</b> statement allows exiting a function and passing control back to the caller of the function. A function can return values to its caller via a return statement.
+        <br><br>Example:</p>
+      <pre><code class="language-cpp">return;</code></pre>
+      <br>
+      <p>Or</p> <br>
+      <pre><code>return expression;</code></pre><br>
+      <p>In the first case, the returned value is undefined. In the second case, the value of the expression is returned to the caller of the function.</p><br>
+
+      <h2>Empty Statement</h2>
+      <p>In certain situations, the C++ language syntax requires a statement at a certain point in the program, but the program logic does not. This is where the empty statement comes in, with the following syntax:</p><br>
+        <pre><code class="language-cpp">;</code></pre><br>
+        <p>When the empty statement is encountered, no action will be taken.</p><br>
+
+      <div class="lessons-buttons">
+        <a href="operatorieng.html"> <button class="button-18" role="button">Previous Lesson</button></a>
+        <a href="stralteng.html"> <button class="button-18" role="button">Next Lesson</button></a>
+      </div>
+    </div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+  
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="7.5" r="1.5"></circle>
+      <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+      <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M12 20v-8"></path>
+    </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+    <h3>Accessibility Options</h3>
+    
+    <div class="option-group">
+      <h4>Color Contrast</h4>
+      <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+      <button id="highContrastBtn" class="option-btn">High Contrast</button>
+      <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+      <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Size</h4>
+      <button id="defaultTextBtn" class="option-btn active">Normal</button>
+      <button id="largeTextBtn" class="option-btn">Large</button>
+      <button id="largerTextBtn" class="option-btn">Larger</button>
+      <button id="largestTextBtn" class="option-btn">Largest</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Spacing</h4>
+      <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+      <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+      <button id="widerSpacingBtn" class="option-btn">Wider</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Reading Aids</h4>
+      <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+      <button id="readableFontBtn" class="option-btn">Readable Font</button>
+      <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+      <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+    </div>
+    
+    <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

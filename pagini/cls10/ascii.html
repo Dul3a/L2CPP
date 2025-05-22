@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <ul>
+        <li><a class="logo-link" href="../../index.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../index.html"> Acasă </a></li>
+        <li><a href="../../pagini/clasa9.html"> Clasa a IX-a </a></li>
+        <li><a href="../../pagini/clasa10.html"> Clasa a X-a </a></li>
+        <li><a href="../../pagini/programa.html"> Programă </a></li>
+        <li><a href="../../pagini/test.html"> Test </a></li>
+        <li><a href="../../pages/cls10/asciieng.html"> EN </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograme</button>
+          <div class="panel">
+            <a href="../../pagini/clasa10.html"><button class="submenu-btn">Anatomia unei funcții C++</button></a>
+            <a href="defdecfun.html"><button class="submenu-btn">Definirea și declararea unei funcții C++</button></a>
+            <a href="decvar.html"><button class="submenu-btn">Declararea variabilelor</button></a>
+            <a href="tranpar.html"><button class="submenu-btn">Transmiterea parametrilor</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursivitate</button>
+          <div class="panel">
+            <a href="recursivitate.html"><button class="submenu-btn">Funcțiile recursive</button></a>
+            <a href="recnum.html"><button class="submenu-btn">Funcții recursive pentru prelucarea cifrelor unui număr</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimp.html"><button class="submenu-btn">Metoda Divide et Impera</button></a>
+            <a href="mergesort.html"><button class="submenu-btn">Sortarea prin interclasare - MergeSort</button></a>
+            <a href="quicksort.html"><button class="submenu-btn">Sortarea rapidă - QuickSort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Șiruri de caractere</button>
+          <div class="panel">
+            <a href="ascii.html"><button class="submenu-btn">Codul ASCII</button></a>
+            <a href="decpar.html"><button class="submenu-btn">Declararea și parcurgerea unui șir de caractere</button></a>
+            <a href="fpredef.html"><button class="submenu-btn">Funcții predefinite pentru șiruri de caractere</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Codul ASCII</h1><br><br>
+        <p>În orice sistem de calcul, datele – de orice tip – se memorează sub formă de numere. Mai mult, acestea se reprezintă în baza 2. În consecință, pentru a memora în calculator caractere este necesară utilizarea unei reprezentări a caracterelor prin numere. O astfel de reprezentare este <b>Codul ASCII.</b></p><br>
+        <p>ASCII este o formă de reprezentare în calculator a caracterelor folosită în toate limbajele de programare studiate în liceu, alături eventual de alte reprezentări.
+        <p>Codul ASCII standard codifică caracterele folosind 7 biți, astfel că permite codificarea a 27=128 caractere. Nu sunt prea multe! De fapt sunt codificate numai literele din alfabetul englez, cifrele de la 0 la 9, semnele de punctuație și operatorii, precum și alte simboluri. Lipsesc cu desăvârșire literele specifice altor alfabete latine (așa numite litere cu diacritice, precum ar fi ă Ă î Î â Â ș Ș ț Ț ş Ş Ţ ţ (observăm că sunt două feluri de Ș și doua feluri de Ţ, dar despre acest fapt vom discuta în alt articol ), precum și literele din alte alfabete: chirilic, ebraic, arab, chinez, etc. Pentru memorarea acestor litere se poate folosi codul ASCII Extins, sau codul UNICODE.</p><br>
+        <p>Prin codul ASCII, fiecărui caracter reprezentat în acest cod i se asociază un număr. Aceste numere (numite chiar coduri ASCII) se găsesc în intervalul 0 .. 127. Caracterele ASCII se împart în două categorii:</p>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>caractere imprimabile – cele cu codurile ASCII în intervalul 32 126, inclusiv capetele: aici se regăsesc toate caracterele care au o reprezentare grafică bine determinată:</li>
+              <ul style="padding-left: 26px;">
+                <li>literele mari: A ... Z,</li>
+                <li>literele mici: a ... z,</li>
+                <li>cifrele 0 .. 9,</li>
+                <li>semnele de punctuaţie .,:;!?'"</li>
+                <li>caractere ce reprezintă operaţii aritmetice sau de alt tip: + - / * <> = (){}[]</li>
+                <li>alte caractere: ~`@#$%^&_\|</li>
+                <li><b>caracterul spaţiu</b></li>
+              </ul>
+              <li>caracterele neimprimabile, sau de control – cu codurile 0 .. 31 și 127. Ele erau folosite mai demult pentru a controla transmiterea datelor. Caracterele neimprimabile nu au o reprezentare grafică bine determinată – în funcţie de sistemul operare folosit, reprezentările grafice ale acestor caractere pot fi foarte diferite, sau chiar să lipsească cu totul. Dintre aceste caractere amintim două, de o importanţă mai mare în limbajele de programare studiate:</li>
+              <ul style="padding-left: 26px;">
+                <li>caracterul cu codul 0, numit și caracter nul, notat în C++ cu '\0' – reprezintă finalul unui șir de caractere în memorie</li>
+                <li>caracterul cu codul 10, numit Line Feed, notat în C++ cu '\n' – produce trecerea la rând nou atunci când este afișat pe ecran sau într-un fișier.</li>
+              </ul>
+          </ul>
+        </ol><br>
+        <h2>Observaţii utile</h2>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>literele mari și literele mici sunt diferite – au coduri ASCII diferite</li>
+              <li>codurile ASCII ale literelor mari (sau mici) sunt în ordine: 'A' are codul 65, 'B' are codul 66, .. , 'Z' are codul 90. Două caractere consecutive în alfabet au coduri ASCII consecutive! De asemenea, litera 'a' are codul 97, etc.</li>
+              <li>codurile ASCII ale literelor mici sunt mai mari decât codurile ASCII ale literelor mari ('a' > 'Z') și diferenţa între codurile ASCII a două litere (mică – mare) este 32.</li>
+              <li>cifrele au coduri consecutive: caracterul '0' are codul 48, caracterul '1' are codul 49, etc. *Observăm că caracterul '0' nu are codul ASCII 0, ci 48.</li>
+              <li>caracterul spaţiu este un caracter imprimabil. Spațiul are codul ASCII 32.</li>
+          </ul>
+        </ol><br><br>
+        <h2>Tabel ASCII</h2>
+        <p style="text-align: center;"><img src="../../Images & Videos/ASCII-Table.png" alt=""></p><br>
+        <div class="lessons-buttons">
+          <a href="quicksort.html"> <button class="button-18" role="button">Lectia Anterioara</button></a>
+          <a href="decpar.html"> <button class="button-18" role="button">Urmatoarea lectie</button></a>
+        </div>
+      </div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+  
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="7.5" r="1.5"></circle>
+          <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+          <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M12 20v-8"></path>
+      </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+          <h4>Color Contrast</h4>
+          <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+          <button id="highContrastBtn" class="option-btn">High Contrast</button>
+          <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+          <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Size</h4>
+          <button id="defaultTextBtn" class="option-btn active">Normal</button>
+          <button id="largeTextBtn" class="option-btn">Large</button>
+          <button id="largerTextBtn" class="option-btn">Larger</button>
+          <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Spacing</h4>
+          <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+          <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+          <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Reading Aids</h4>
+          <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+          <button id="readableFontBtn" class="option-btn">Readable Font</button>
+          <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+          <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

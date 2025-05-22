@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <ul>
+        <li><a class="logo-link" href="../../index.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../index.html"> Acasă </a></li>
+        <li><a href="../../pagini/clasa9.html"> Clasa a IX-a </a></li>
+        <li><a href="../../pagini/clasa10.html"> Clasa a X-a </a></li>
+        <li><a href="../../pagini/programa.html"> Programă </a></li>
+        <li><a href="../../pagini/test.html"> Test </a></li>
+        <li><a href="../../pages/cls10/divetimpeng.html"> EN </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograme</button>
+          <div class="panel">
+            <a href="../../pagini/clasa10.html"><button class="submenu-btn">Anatomia unei funcții C++</button></a>
+            <a href="defdecfun.html"><button class="submenu-btn">Definirea și declararea unei funcții C++</button></a>
+            <a href="decvar.html"><button class="submenu-btn">Declararea variabilelor</button></a>
+            <a href="tranpar.html"><button class="submenu-btn">Transmiterea parametrilor</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursivitate</button>
+          <div class="panel">
+            <a href="recursivitate.html"><button class="submenu-btn">Funcțiile recursive</button></a>
+            <a href="recnum.html"><button class="submenu-btn">Funcții recursive pentru prelucarea cifrelor unui număr</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimp.html"><button class="submenu-btn">Metoda Divide et Impera</button></a>
+            <a href="mergesort.html"><button class="submenu-btn">Sortarea prin interclasare - MergeSort</button></a>
+            <a href="quicksort.html"><button class="submenu-btn">Sortarea rapidă - QuickSort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Șiruri de caractere</button>
+          <div class="panel">
+            <a href="ascii.html"><button class="submenu-btn">Codul ASCII</button></a>
+            <a href="decpar.html"><button class="submenu-btn">Declararea și parcurgerea unui șir de caractere</button></a>
+            <a href="fpredef.html"><button class="submenu-btn">Funcții predefinite pentru șiruri de caractere</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Divide et Impera</h1><br><br>
+        <p><b>Divide et Impera</b> este o metodă de programare bazată pe un principiu simplu:</p>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>problema dată se descompune în două (sau mai multe) subprobleme (de același tip ca problema inițială, dar de dimensiuni mai mici);</li>
+              <li>se rezolvă independent fiecare subproblemă;</li>
+              <li>se combină rezultatele obținute pentru subprobleme, obținând rezultatul problemei inițiale.</li>
+          </ul>
+        </ol><br>
+        <p>Subproblemele trebuie să fie de același tip cu problema inițială, ele urmând a fi rezolvate prin aceeași tehnică.</p><br>
+        <p>Subproblemele în care se descompun problema dată trebuie să fie:</p>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>de același tip cu problema dată;</li>
+              <li>de dimensiuni mai mici (mai "ușoare");</li>
+              <li>independente (să nu se suprapună, prelucrează seturi de date distincte).</li>
+          </ul>
+        </ol><br><br>
+        <p style="text-align: center"><img src="../../Images & Videos/divide-et-impera.png" alt=""></p><br><br>
+        <p>În tehnica Divide et Impera, în urma împărțirilor succesive în subprobleme, se ajunge în situația că problema curentă nu mai poate fi împărțită în subprobleme. O asemenea problemă se numește problemă elementară și se rezolvă în alt mod – de regulă foarte simplu.</p><br>
+        <p>Divide et Impera admite de regulă o implementare recursivă – rezolvarea problemei constă în rezolvarea unor subprobleme de același tip. Un algoritm pseudocod care descrie metoda este:</p>
+        <pre><code class="language-cpp">Algoritm DivImp(P)
+    Dacă P este problemă elementară 
+        R <- RezolvăDirect(P)
+    Altfel
+        [P1,P2] <- Descompune(P)
+        R1 <- DivImp(P1)
+        R2 <- DivImp(P2)
+        R <- Combină(R1,R2)
+    SfârșitDacă
+SfârșitAlgoritm</code></pre><br>
+      <h3>Exemplu: Cmmdc al elementelor dintr-un vector</h3>
+      <p><i>Fie un vector V cu n elemente naturale nenule, indexate de la 1 la n. Să se determine cel mai mare divizor comun al lor.</i></p>
+      <br><p>La fel în cazul problemei precedente, o transformă într-una cu secvențe. Vom determina cel mai mare divizor comun al elementelor dintr-o secvență delimitată de indicii <b>st</b> și <b>dr</b>:</p>
+      <pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+int cmmdc(int v[100], int s, int d)
+{ 
+if(s==d) return v[s];
+else
+{ 
+  int x,y;
+  x=cmmdc(v,s,(s+d)/2);
+  y=cmmdc(v,(s+d)/2+1,d);
+
+  while(x!=y)
+    if(x>y) x=x-y;
+      else y=y-x;
+
+  return x;
+}}
+
+int main()
+{
+int v[100], n, i;
+cin >>n;
+for(i=1;i<=n;i++)
+   cin >> v[i];
+cout << cmmdc(a,1,n);
+return 0;
+}</code></pre><br>
+  <div class="lessons-buttons">
+    <a href="recnum.html"> <button class="button-18" role="button">Lectia Anterioara</button></a>
+    <a href="mergesort.html"> <button class="button-18" role="button">Urmatoarea lectie</button></a>
+  </div>
+      </div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+  
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="7.5" r="1.5"></circle>
+          <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+          <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M12 20v-8"></path>
+      </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+          <h4>Color Contrast</h4>
+          <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+          <button id="highContrastBtn" class="option-btn">High Contrast</button>
+          <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+          <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Size</h4>
+          <button id="defaultTextBtn" class="option-btn active">Normal</button>
+          <button id="largeTextBtn" class="option-btn">Large</button>
+          <button id="largerTextBtn" class="option-btn">Larger</button>
+          <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Spacing</h4>
+          <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+          <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+          <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Reading Aids</h4>
+          <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+          <button id="readableFontBtn" class="option-btn">Readable Font</button>
+          <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+          <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

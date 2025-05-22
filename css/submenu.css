@@ -1,0 +1,60 @@
+.sidebar {
+  width: 200px;
+  /*background-color: #f2f2f2;*/
+  background-color: rgb(8, 19, 56);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-top: 44px;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  /*background-color: #ddd;*/
+  background-color: rgb(7, 15, 42);
+  border: none;
+  cursor: pointer;
+  color:rgba(240, 248, 255, 0.671);
+}
+
+.accordion-btn:hover,
+.accordion-btn.active {
+  /*background-color: #bbb;*/
+  background-color: rgb(7, 12, 32);
+}
+
+.panel {
+  display: none;
+  padding-left: 10px;
+}
+
+.panel.show {
+  display: block;
+}
+
+.submenu-btn {
+  width: 100%;
+  padding: 8px;
+  text-align: left;
+  /*background-color: #f2f2f2;*/
+  background-color: rgb(7, 15, 42);
+  border: none;
+  cursor: pointer;
+  color:rgba(255, 255, 255, 0.509);
+}
+
+.submenu-btn:hover,
+.submenu-btn.active {
+ /* background-color: #ddd;*/
+ background-color: rgb(23, 32, 65);
+}

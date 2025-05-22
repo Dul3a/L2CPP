@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <button class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a class="logo-link" href="../../index.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../index.html"> Acasă </a></li>
+        <li><a href="../../pagini/clasa9.html"> Clasa a IX-a </a></li>
+        <li><a href="../../pagini/clasa10.html"> Clasa a X-a </a></li>
+        <li><a href="../../pagini/programa.html"> Programă </a></li>
+        <li><a href="../../pagini/test.html"> Test </a></li>
+        <li><a href="../../pages/cls9/inouteng.html"> EN </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+      <div class="accordion">
+        <button class="accordion-btn">Elemente de bază ale limbajului C++</button>
+        <div class="panel">
+          <a href="../../pagini/clasa9.html"><button class="submenu-btn">Introducere în C++</button></a>
+          <a href="tipdata.html"><button class="submenu-btn">Tipuri de date în C++</button></a>
+          <a href="inout.html"><button class="submenu-btn">Intrări și Ieșiri în C++</button></a>
+          <a href="operatori.html"><button class="submenu-btn">Operatori C++</button></a>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-btn">Structuri de control</button></a>
+        <div class="panel">
+          <a href="strlin.html"><button class="submenu-btn">Structuri liniare</button></a>
+          <a href="stralt.html"><button class="submenu-btn">Structuri alternative</button></a>
+          <a href="strrep.html"><button class="submenu-btn">Structuri repetitive</button></a>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-btn">Vectori</button>
+        <div class="panel">
+          <a href="decparc.html"><button class="submenu-btn">Declararea și parcurgerea tablourilor unidimensionale</button></a>
+          <a href="steins.html"><button class="submenu-btn">Ștergeri și inserări de elemente</button></a>
+          <a href="verif.html"><button class="submenu-btn">Verificarea unor proprietăți</button></a>
+          <a href="sort.html"><button class="submenu-btn">Sortarea vectorilor</button></a>
+          <a href="frecv.html"><button class="submenu-btn">Vectori caracteristici și de frecvență</button></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="inner">
+      <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Intrări/Ieșiri în C++</h1><br><br>
+      <p style="text-align: justify;">Operațiile de de intrare/ieșire sunt operațiile prin care un program primește date sau afișează rezultate. Aceste operații trebuie privite din perspectiva programului</p>
+      <ol style="padding-left: 20px;">
+            <ul style="padding-left: 13px;">
+                <li><b>operații de intrare</b>: datele intră în program, programul citește date</li>
+                <li><b>operații de ieșire</b>: datele ies din program, programul afișează date</li>
+            </ul>
+      </ol><br>
+      <p style="text-align: justify;">Practic, datele care intră în program sau ies din program sunt șiruri de caractere pe care programul le primește, respectiv le trimite<br>
+        <br>Limbajul C++ oferă o modalitate uniformă de a realiza operațiile de intrare/ieșire, indiferent dacă se fac la consolă, în fișiere, sau cu alte dispozitive care prelucrează caractere.
+         Este vorba despre stream sau flux. Stream-ul poate fi privit ca o înșiruire de caractere care sunt trimise într-o ordine bine determinată de la o sursă la o destinație. Programul va insera caractere în stream (dacă este un stream de ieșire, care afișează date) sau va extrage caractere din stream (dacă este un stream de intrare, din care se citesc date).
+         În continuare vom vorbi despre <b>cout</b> și <b>cin</b> – stream-ul standard de ieșire și de intrare.
+      </p><br>
+      <h2>Stream-ul de ieșire cout</h2>
+      <p style="text-align: justify;">În cele mai multe cazuri, dispozitivul standard de ieșire este ecranul și poate fi accesat cu stream-ul cout. Pentru aceasta, cout se folosește împreună cu operatorul de inserție "<<"", urmat de data care se va afișa:</p>
+      <pre><code class="language-cpp">cout << "Salut"; // afiseaza pe ecran Salut
+cout << 17; // afiseaza numarul 17 pe ecran
+cout << n; // afiseaza pe ecran valoarea variabilei n</code></pre><br>
+
+      <h2>Stream-ul de intrare cin</h2>
+      <p style="text-align: justify;">În cele mai multe cazuri, dispozitivul standard de intrare este tastatura și poate fi accesat cu stream-ul cin. Pentru aceasta, cin se folosește împreună cu operatorul de extragere >>, urmat de variabila în care se va memora valoarea extrasă (variabila care se va citi):</p>
+      <pre><code class="language-cpp">int n;
+cin >> n;</code></pre>
+    <p style="text-align: justify;">Mai întâi se declară variabila n, apoi se citește o valoare pentru ea – se extrage din cin o valoare care se memorează în variabila n. La execuție, programul așteaptă să se introducă o valoare de la tastatură. De fapt, caracterele introduse sunt transmise programului numai când se apasă tasta <b>ENTER.</b></p><br><br>
+        
+    <h1 style="text-align: center;">Operații de intrare/ieșire cu fișiere în C++</h1><br>
+    <p style="text-align: justify;">Operațiile standard de intrare/ieșire se fac cu tastatură și ecranul, dar este posibil să realizăm și citiri din fișiere text, respectiv scrieri în fișiere text. Pentru a realiza operațiile propriu-zise, fișierele sunt asociate cu fluxuri de date, iar operațiile sunt similare cu cele cu tastatura și ecranul.</p><br>
+    <h2>Etapele lucrului cu fișiere text</h2>
+    În C++ există mai multe modalități de lucru cu fișiere text. Toate respectă următoarele etape:
+    <ol style="padding-left: 45px;">
+      <li>deschiderea fișierului/asocierea fișierului cu un flux de date;</li>
+      <li>citirea din fișier/scrierea în fișier;</li>
+      <li>închiderea fișierului/fluxului de date.</li>
+    </ol><br>
+    <h2>Deschiderea fișierului</h2>
+    O modalitate uzuală de a deschide fișiere constă în declararea unor variabile de tip flux. Acestea sunt de tip:
+    <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li><b>ofstream</b> pentru fluxurile de ieșire – asociate cu fișierele în care vom scrie;</li>
+              <li><b>ifstream</b> pentru fluxurile de intrare – asociate cu fișierele din care vom citi;</li>
+  </ol><br>
+  Declararea variabilelor se poate face astfel:
+  <pre><code class="language-cpp">ifstream fin("NUME_FISIER_INTRARE");
+ofstream fout("NUME_FISIER_IESIRE");</code></pre><br>
+    <h2>Citirea din fișier/scrierea în fișier</h2>
+    Pentru citirea propiu-zisă a datelor din fișier/scrierea datelor în fișier se folosesc operatorii de extracție din flux/inserare în flux.<br><br>De exemplu:
+    <pre><code class="language-cpp">int x;
+fin >> x;
+fout << 2 * x;</code></pre><br>
+<h2>Închiderea fișierelor</h2><br>
+Se face astfel:
+<pre><code class="language-cpp">fin.close();
+fout.close();</code></pre><br>
+  <div class="lessons-buttons">
+    <a href="tipdata.html"> <button class="button-18" role="button">Lectia Anterioara</button></a>
+    <a href="operatori.html"> <button class="button-18" role="button">Urmatoarea lectie</button></a>
+  </div>
+  </div>
+  
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="7.5" r="1.5"></circle>
+      <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+      <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M12 20v-8"></path>
+    </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+    <h3>Accessibility Options</h3>
+    
+    <div class="option-group">
+      <h4>Color Contrast</h4>
+      <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+      <button id="highContrastBtn" class="option-btn">High Contrast</button>
+      <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+      <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Size</h4>
+      <button id="defaultTextBtn" class="option-btn active">Normal</button>
+      <button id="largeTextBtn" class="option-btn">Large</button>
+      <button id="largerTextBtn" class="option-btn">Larger</button>
+      <button id="largestTextBtn" class="option-btn">Largest</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Spacing</h4>
+      <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+      <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+      <button id="widerSpacingBtn" class="option-btn">Wider</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Reading Aids</h4>
+      <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+      <button id="readableFontBtn" class="option-btn">Readable Font</button>
+      <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+      <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+    </div>
+    
+    <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

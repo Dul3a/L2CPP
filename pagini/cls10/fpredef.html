@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <ul>
+        <li><a class="logo-link" href="../../index.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../index.html"> Acasă </a></li>
+        <li><a href="../../pagini/clasa9.html"> Clasa a IX-a </a></li>
+        <li><a href="../../pagini/clasa10.html"> Clasa a X-a </a></li>
+        <li><a href="../../pagini/programa.html"> Programă </a></li>
+        <li><a href="../../pagini/test.html"> Test </a></li>
+        <li><a href="../../pages/cls10/fpredefeng.html"> EN </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograme</button>
+          <div class="panel">
+            <a href="../../pagini/clasa10.html"><button class="submenu-btn">Anatomia unei funcții C++</button></a>
+            <a href="defdecfun.html"><button class="submenu-btn">Definirea și declararea unei funcții C++</button></a>
+            <a href="decvar.html"><button class="submenu-btn">Declararea variabilelor</button></a>
+            <a href="tranpar.html"><button class="submenu-btn">Transmiterea parametrilor</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursivitate</button>
+          <div class="panel">
+            <a href="recursivitate.html"><button class="submenu-btn">Funcțiile recursive</button></a>
+            <a href="recnum.html"><button class="submenu-btn">Funcții recursive pentru prelucrarea cifrelor unui număr</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimp.html"><button class="submenu-btn">Metoda Divide et Impera</button></a>
+            <a href="mergesort.html"><button class="submenu-btn">Sortarea prin interclasare - MergeSort</button></a>
+            <a href="quicksort.html"><button class="submenu-btn">Sortarea rapidă - QuickSort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Șiruri de caractere</button>
+          <div class="panel">
+            <a href="ascii.html"><button class="submenu-btn">Codul ASCII</button></a>
+            <a href="decpar.html"><button class="submenu-btn">Declararea și parcurgerea unui șir de caractere</button></a>
+            <a href="fpredef.html"><button class="submenu-btn">Funcții predefinite pentru șiruri de caractere</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Funcții predefinite pentru șiruri de caractere</h1><br><br>
+        <p>Următoarele funcții prelucrează șiruri de caractere. Dacă nu se precizează altfel, prototipul lor se află în header-ul cstring.</p><br>
+        
+        <h2>strlen</h2>
+        <pre><code class="language-cpp">strlen( const char* str );</code></pre>
+        <p>Returnează lungimea șirului str, adică numărul de caractere din șirul al cărui prim caracter se află la adresa memorată în str. Caracterul nul nu se numără.</p>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">cout << strlen("bac"); // 3
+char s[10]="copil";
+cout << strlen(s); // 5
+cout << strlen(s + 2); //3</code></pre><br><br>
+
+        <h2>strcpy</h2>
+        <pre><code class="language-cpp">strcpy( char* dest, const char* src );</code></pre>
+        <p>Copiază caracterele din șirul aflat la adresa src, inclusiv caracterul nul, în șirul al cărui prim element se află la adresa din dest.</p><br>
+        <p>Funcția returnează adresa <b>dest</b>.</p>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">char s[21], t[21] = "copil";
+strcpy(s , "bac");
+cout << s; // bac
+strcpy(s , t);
+cout << s; // copil
+strcpy(s , t + 2);
+cout << s; // pil
+strcpy(s + 2 , t);
+cout << s; // picopil</code></pre><br><br>
+        <h2>strcat</h2>
+        <pre><code class="language-cpp">strcat( char *dest, const char *src );</code></pre>
+        <p>Adaugă (concatenează) caracterele din șirul aflat la adresa src, inclusiv caracterul nul, la șirul al cărui prim element se află la adresa din dest.</p><br>
+        <p>Funcția returnează adresa <b>dest</b>.</p>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">char s[21]="bac", t[21] = "copil";
+strcat(s , t);
+cout << s; // baccopil
+strcat(s , t + 2);
+cout << s; // baccopilpil</code></pre><br><br>
+
+        <h2>strchr</h2>
+        <pre><code class="language-cpp">strchr( char * str, char ch );</code></pre>
+        <p>Caută caracterul ch în șirul al cărui prim caracter se află în memorie la adresa din str.</p><br>
+        <p>Funcția returnează adresa NULL, dacă caracterul ch nu apare în șirul str, respectiva adresa primei apariții al lui ch în str, dacă ch apare în str.</p>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">char s[21]="bacalaureat";
+char * p = strchr(s , 'l');
+cout << p; // laureat</code></pre><br>
+        <pre><code class="language-cpp">char ch = 'i';
+if(strchr("aeiou" , ch) != NULL)
+  cout << "DA"
+else
+  cout << "NU";
+//se va afisa DA</code></pre><br><br>
+        <h2>strstr</h2>
+        <pre><code class="language-cpp">strstr( char * s, char * t );</code></pre>
+        <p>Caută șirul t în șirul al cărui prim caracter se află în memorie la adresa din s.</p><br>
+        <p>Funcția returnează adresa <b>NULL</b>, dacă șirul t nu apare în șirul s, respectiva adresa primei apariții al lui t în s, dacă t apare în s.</p>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">char s[21]="bacalaureat";
+char * p = strstr(s , "lau");
+cout << p; // laureat</code></pre><br><br>
+        
+        <h2>strcmp</h2>
+        <pre><code class="language-cpp">strcmp( char * s, char * t );</code></pre>
+        <p>Compară lexicografic cele două șiruri de caractere:</p>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>dacă șirul s este lexicografi mai mic decât t funcția va returna o valoare negativă</li>
+              <li>dacă șirul s este lexicografi mai mare decât t funcția va returna o valoare pozitivă</li>
+              <li>dacă cele două șiruri sunt identice funcția va returna valoarea 0</li>
+          </ul>
+        </ol>
+        <br><h3>Exemple:</h3>
+        <pre><code class="language-cpp">char s[21]="abur", t[21]="abecedar";
+if(strcmp(s , t) < 0)
+  cout << "Da"
+else
+  cout << "Nu";
+// se va afisa Nu; cuvantul "abur" este lexicografic dupa "abecedar"</code></pre><br><br>
+
+        <h2>strtok</h2>
+        <pre><code class="language-cpp">strtok( char *str, const char *sep );</code></pre>
+        <p>Funcția strtok extrage dintr-un sir de caractere câte un subșir (cuvânt) delimitat de caractere din șirul sep. Funcția se apelează în două moduri:</p>
+        <ol style="padding-left: 20px;"> 
+          <ul style="padding-left: 13px;">
+              <li>primul apel are ca parametri șirul din care se face extragerea și șirul separatorilor</li>
+              <li>la următoarele apeluri primul parametru este NULL.</li>
+          </ul>
+        </ol>
+        <p>Rezultatul funcției strtok este adresa de început a subșirului curent extras, sau NULL dacă nu se mai poate extrage niciun subșir din șirul dat.</p>
+        <br><h3>Exemplu:</h3>
+        <p>Secvența de mai jos extrage dintr-un șir s cuvintele (separate prin caractere din mulțimea {' ', ',', '.'}) și le afișează pe linii diferite. Șirul s se presupune declarat și citit.</p>
+        <pre><code class="language-cpp">char sep[]=" .,";
+char * p = strtok(s , sep);
+while(p != NULL)
+{
+    cout << p << endl;
+    p = strtok(NULL , sep);
+}</code></pre><br>
+        <a href="decpar.html"> <button class="button-18" role="button">Lectia Anterioara</button></a> 
+      </div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+    
+    <!-- Accessibility Button -->
+    <button id="accessibilityBtn" aria-label="Accessibility Options">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="7.5" r="1.5"></circle>
+            <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+            <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+            <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+            <path d="M12 20v-8"></path>
+        </svg>
+    </button>
+    
+    <!-- Accessibility Menu -->
+    <div id="accessibilityMenu">
+        <h3>Accessibility Options</h3>
+        
+        <div class="option-group">
+            <h4>Color Contrast</h4>
+            <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+            <button id="highContrastBtn" class="option-btn">High Contrast</button>
+            <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+            <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+        </div>
+        
+        <div class="option-group">
+            <h4>Text Size</h4>
+            <button id="defaultTextBtn" class="option-btn active">Normal</button>
+            <button id="largeTextBtn" class="option-btn">Large</button>
+            <button id="largerTextBtn" class="option-btn">Larger</button>
+            <button id="largestTextBtn" class="option-btn">Largest</button>
+        </div>
+        
+        <div class="option-group">
+            <h4>Text Spacing</h4>
+            <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+            <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+            <button id="widerSpacingBtn" class="option-btn">Wider</button>
+        </div>
+        
+        <div class="option-group">
+            <h4>Reading Aids</h4>
+            <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+            <button id="readableFontBtn" class="option-btn">Readable Font</button>
+            <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+            <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+        </div>
+        
+        <button id="resetBtn">Reset All Settings</button>
+    </div>
+    
+    <!-- Reading Guide Line -->
+    <div id="reading-guide-line"></div>
+
+    <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

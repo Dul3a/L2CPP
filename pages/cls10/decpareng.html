@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+        <ul>
+          <li><a class="logo-link" href="../../indexeng.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+          <li><a href="../../indexeng.html"> Home </a></li>
+          <li><a href="../../pages/class9.html"> 9th Grade </a></li>
+          <li><a href="../../pages/class10.html"> 10th Grade </a></li>
+          <li><a href="../../pages/programaeng.html"> Curriculum </a></li>
+          <li><a href="../../pages/testeng.html"> Test </a></li>
+          <li><a href="../../pagini/cls10/decpar.html"> RO </a></li>
+        </ul>
+      </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograms</button>
+          <div class="panel">
+            <a href="../class10.html"><button class="submenu-btn">Anatomy of a C++ Function</button></a>
+            <a href="defdecfuneng.html"><button class="submenu-btn">Defining and Declaring a C++ Function</button></a>
+            <a href="decvareng.html"><button class="submenu-btn">Declaring Variables</button></a>
+            <a href="tranpareng.html"><button class="submenu-btn">Parameter Passing</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursion</button>
+          <div class="panel">
+            <a href="recursivitateeng.html"><button class="submenu-btn">Recursive Functions</button></a>
+            <a href="recnumeng.html"><button class="submenu-btn">Recursive Functions for Processing Digits of a Number</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimpeng.html"><button class="submenu-btn">Divide et Impera Method</button></a>
+            <a href="mergesorteng.html"><button class="submenu-btn">Merge Sort</button></a>
+            <a href="quicksorteng.html"><button class="submenu-btn">Quick Sort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Character Strings</button>
+          <div class="panel">
+            <a href="asciieng.html"><button class="submenu-btn">ASCII Code</button></a>
+            <a href="decpareng.html"><button class="submenu-btn">Declaring and Iterating a Character String</button></a>
+            <a href="fpredefeng.html"><button class="submenu-btn">Predefined Functions for Character Strings</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Declaring and Iterating Through a Character Array</h1><br><br>
+        <p>In C++, there are multiple ways to represent strings. In this article, we will discuss strings represented as one-dimensional arrays with elements of type char, a representation that comes from the C language.
+    
+          These strings are also called null-terminated byte strings (NTBS). Internally, after the last valid character (byte) in the string, there is the '\0' character – the character with ASCII code 0, also called the null character.
+          
+          Thus, to represent the word "copil" (child) in C/C++, which has 5 characters, 6 bytes will be used, with the values: 'c', 'o', 'p', 'i', 'l', '\0'.</p><br>
+        <h2>Declaring a Character Array</h2>
+        <p>A character array is declared in C++ as follows:</p>
+        <pre><code class="language-cpp">char s[11];</code></pre>
+        <p>A string has been declared that can store a maximum of 11 characters, with indices 0 1 ... 10. The array s can store at most 10 useful characters, with the '\0' character stored after the last useful character.</p><br>
+        <p>Also, a string can be initialized at the time of declaration. The following examples declare and initialize character arrays with the string "copil":</p>
+        <pre><code class="language-cpp">char s[11] = "copil"; // only 6 characters are used
+    char t[]="child"; // automatically allocates 6 bytes for the array t: the 5 letters and the null character \0
+    char x[6]={'c','h','i','l','d','\0'}; // initialization is similar to any array - character arrays are arrays
+    char z[]={'c','h','i','l','d','\0'}; // automatically allocates 6 bytes for the array</code></pre><br>
+        <h2>Displaying and Reading a Character Array</h2>
+        <h3>Displaying a Character Array</h3><br>
+        <p>This can be done with the insertion operator << into a stream:</p>
+        <pre><code class="language-cpp">cout << s << endl;</code></pre><br>
+        <h3>Reading a Character Array</h3>
+        <p>The extraction operator >> from a stream can be used:</p>
+        <pre><code class="language-cpp">cin >> s;</code></pre>
+        <p>In this way, due to the specific behavior of the >> operator, strings containing spaces cannot be read – characters will be read up to the first space, without including it.</p><br>
+        <p>To read strings that contain spaces, we can use the getline method of the cin object or another istream object:</p>
+        <pre><code class="language-cpp">istream& getline (char* s, streamsize n );</code></pre><br>
+        <p>Characters from the input stream (keyboard) will be read into the array s until the newline character '\n' is encountered, but not more than n-1 characters. The '\n' character will not be added to the array s but will be extracted from the stream. For example:</p>
+        <pre><code class="language-cpp">cin.getline(s , 11);</code></pre><br>
+        <p>We could say that getline reads the entire line and skips ENTER. Here is a complete example:</p>
+        <pre><code class="language-cpp">#include <iostream>
+    using namespace std;
+    int main(){
+        char name1[31], name2[31];
+        cout << "What is your name? (surname, first name) ";
+        cin.getline(name1, 31);
+        cout << "What is your friend's name? ";
+        cin.getline(name2 , 31);
+        cout << "Your name is " << name1 << endl;
+        cout << "You are friends with " << name2 << endl;
+        return 0;
+    }</code></pre>
+        <p>Another way to read a string that may contain spaces is to use the get method of the istream object, which we will not present here.</p><br>
+        <h2>Referencing a Character in a String. Iterating Through a Character Array</h2>
+        <p>Since character arrays are actually arrays, the [] operator is used to reference a character in the array, as in the following example:</p>
+        <pre><code class="language-cpp">char s[]="abac"; // the array consists of 5 characters: the 4 letters and the null character '\0'
+    cout << s[3]; // c
+    s[1] = 'r';
+    cout << s; // arac
+    cout << s[10]; // ??? unpredictable behavior: there is no character with index 10 in the array</code></pre><br>
+        <p>In many situations, it is necessary to analyze each character in the array. To do this, the array must be iterated through; this is done similarly to iterating through any array. The difference is that, for a character array, the length is not explicitly known. It can be determined with the strlen function (see below), but we can control the iteration by knowing that the null character '\0' appears after the last valid character in the array.</p><br>
+        <p>The following examples iterate through a character array and display the characters separated by spaces:</p>
+        <pre><code class="language-cpp">char s[11];
+    cin >> s; // reads a word without spaces
+    int i = 0;
+    while(s[i] != '\0')
+    {
+        cout << s[i] << " ";
+        i ++;
+    }</code></pre><br>
+        <p>or more concisely:</p><br>
+        <pre><code class="language-cpp">char s[11];
+    cin >> s; // reads a word without spaces
+    for(int i = 0 ; s[i] ; i ++)
+        cout << s[i] << " ";</code></pre><br>
+        <div class="lessons-buttons">
+            <a href="asciieng.html"> <button class="button-18" role="button">Previous Lesson</button></a>
+            <a href="fpredefeng.html"> <button class="button-18" role="button">Next Lesson</button></a>
+        </div>
+    </div>
+    <script src="../../submenu.js"></script>
+    <script src="../../scriptnav.js"></script>
+    <script src="../../burger-menu.js"></script>
+    
+    <!-- Accessibility Button -->
+    <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="7.5" r="1.5"></circle>
+        <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+        <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M12 20v-8"></path>
+      </svg>
+    </button>
+    
+    <!-- Accessibility Menu -->
+    <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+        <h4>Color Contrast</h4>
+        <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+        <button id="highContrastBtn" class="option-btn">High Contrast</button>
+        <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+        <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Size</h4>
+        <button id="defaultTextBtn" class="option-btn active">Normal</button>
+        <button id="largeTextBtn" class="option-btn">Large</button>
+        <button id="largerTextBtn" class="option-btn">Larger</button>
+        <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Spacing</h4>
+        <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+        <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+        <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Reading Aids</h4>
+        <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+        <button id="readableFontBtn" class="option-btn">Readable Font</button>
+        <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+        <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+    </div>
+    
+    <!-- Reading Guide Line -->
+    <div id="reading-guide-line"></div>
+
+    <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>
+    

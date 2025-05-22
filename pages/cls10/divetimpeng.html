@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+        <ul>
+          <li><a class="logo-link" href="../../indexeng.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+          <li><a href="../../indexeng.html"> Home </a></li>
+          <li><a href="../../pages/class9.html"> 9th Grade </a></li>
+          <li><a href="../../pages/class10.html"> 10th Grade </a></li>
+          <li><a href="../../pages/programaeng.html"> Curriculum </a></li>
+          <li><a href="../../pages/testeng.html"> Test </a></li>
+          <li><a href="../../pagini/cls10/divetimp.html"> RO </a></li>
+        </ul>
+      </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograms</button>
+          <div class="panel">
+            <a href="../class10.html"><button class="submenu-btn">Anatomy of a C++ Function</button></a>
+            <a href="defdecfuneng.html"><button class="submenu-btn">Defining and Declaring a C++ Function</button></a>
+            <a href="decvareng.html"><button class="submenu-btn">Declaring Variables</button></a>
+            <a href="tranpareng.html"><button class="submenu-btn">Parameter Passing</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursion</button>
+          <div class="panel">
+            <a href="recursivitateeng.html"><button class="submenu-btn">Recursive Functions</button></a>
+            <a href="recnumeng.html"><button class="submenu-btn">Recursive Functions for Processing Digits of a Number</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimpeng.html"><button class="submenu-btn">Divide et Impera Method</button></a>
+            <a href="mergesorteng.html"><button class="submenu-btn">Merge Sort</button></a>
+            <a href="quicksorteng.html"><button class="submenu-btn">Quick Sort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Character Strings</button>
+          <div class="panel">
+            <a href="asciieng.html"><button class="submenu-btn">ASCII Code</button></a>
+            <a href="decpareng.html"><button class="submenu-btn">Declaring and Iterating a Character String</button></a>
+            <a href="fpredefeng.html"><button class="submenu-btn">Predefined Functions for Character Strings</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Divide et Impera</h1><br><br>
+        <p><b>Divide et Impera</b> is a programming method based on a simple principle:</p>
+        <ol style="padding-left: 20px;">
+            <ul style="padding-left: 13px;">
+                <li>the given problem is decomposed into two (or more) subproblems (of the same type as the initial problem, but of smaller size);</li>
+                <li>each subproblem is solved independently;</li>
+                <li>the results obtained for the subproblems are combined, obtaining the result of the initial problem.</li>
+            </ul>
+        </ol><br>
+        <p>The subproblems must be of the same type as the initial problem and will be solved using the same technique.</p><br>
+        <p>The subproblems into which the given problem is decomposed must be:</p>
+        <ol style="padding-left: 20px;">
+            <ul style="padding-left: 13px;">
+                <li>of the same type as the given problem;</li>
+                <li>of smaller size (easier);</li>
+                <li>independent (they do not overlap, processing distinct data sets).</li>
+            </ul>
+        </ol><br>
+        <p>In the Divide et Impera technique, after successive divisions into subproblems, the situation arises where the current problem can no longer be divided into subproblems. Such a problem is called an elementary problem and is solved in another way – usually very simply.</p><br>
+        <p>Divide et Impera typically admits a recursive implementation – solving the problem consists of solving subproblems of the same type. A pseudocode algorithm that describes the method is:</p>
+        <pre><code class="language-cpp">Algorithm DivImp(P)
+        If P is an elementary problem 
+            R <- SolveDirectly(P)
+        Else
+            [P1, P2] <- Decompose(P)
+            R1 <- DivImp(P1)
+            R2 <- DivImp(P2)
+            R <- Combine(R1, R2)
+        EndIf
+    EndAlgorithm</code></pre><br>
+        <h3>Example: GCD of elements in an array</h3>
+        <p><i>Given an array V with n non-zero natural elements, indexed from 1 to n. Determine their greatest common divisor.</i></p><br>
+        <p>As in the previous problem, we transform it into one with sequences. We will determine the greatest common divisor of the elements in a sequence delimited by indices <b>st</b> and <b>dr</b>:</p>
+        <pre><code class="language-cpp">#include <iostream>
+    using namespace std;
+    
+    int gcd(int v[100], int s, int d)
+    { 
+        if (s == d) return v[s];
+        else
+        { 
+            int x, y;
+            x = gcd(v, s, (s + d) / 2);
+            y = gcd(v, (s + d) / 2 + 1, d);
+    
+            while (x != y)
+                if (x > y) x = x - y;
+                else y = y - x;
+    
+            return x;
+        }
+    }
+    
+    int main()
+    {
+        int v[100], n, i;
+        cin >> n;
+        for (i = 1; i <= n; i++)
+            cin >> v[i];
+        cout << gcd(v, 1, n);
+        return 0;
+    }</code></pre><br>
+        <div class="lessons-buttons">
+            <a href="recnumeng.html"> <button class="button-18" role="button">Previous Lesson</button></a>
+            <a href="mergesorteng.html"> <button class="button-18" role="button">Next Lesson</button></a>
+        </div>
+    </div>
+    <script src="../../submenu.js"></script>
+    <script src="../../scriptnav.js"></script>
+    <script src="../../burger-menu.js"></script>
+    
+    <!-- Accessibility Button -->
+    <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="7.5" r="1.5"></circle>
+        <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+        <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M12 20v-8"></path>
+      </svg>
+    </button>
+    
+    <!-- Accessibility Menu -->
+    <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+        <h4>Color Contrast</h4>
+        <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+        <button id="highContrastBtn" class="option-btn">High Contrast</button>
+        <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+        <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Size</h4>
+        <button id="defaultTextBtn" class="option-btn active">Normal</button>
+        <button id="largeTextBtn" class="option-btn">Large</button>
+        <button id="largerTextBtn" class="option-btn">Larger</button>
+        <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Spacing</h4>
+        <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+        <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+        <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Reading Aids</h4>
+        <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+        <button id="readableFontBtn" class="option-btn">Readable Font</button>
+        <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+        <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+    </div>
+    
+    <!-- Reading Guide Line -->
+    <div id="reading-guide-line"></div>
+
+    <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>
+    

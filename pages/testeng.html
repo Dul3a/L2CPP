@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/questions.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Learn Programming! </title>
+    <link rel="stylesheet" href="../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <button class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a class="logo-link" href="../indexeng.html"><img class="logo" src="../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../indexeng.html"> Home </a></li>
+        <li><a href="class9.html"> 9th Grade </a></li>
+        <li><a href="class10.html"> 10th Grade </a></li>
+        <li><a href="programaeng.html"> Curriculum </a></li>
+        <li><a href="testeng.html"> Test </a></li>
+        <li><a href="../pagini/test.html"> RO </a></li>
+      </ul>
+    </nav>
+    <br><br><br>
+    <div class="exam-questions">
+      <ul class="questions">
+        
+          <li> 
+            <div id="question0" class="question"> 1. Complete the code to create a C++ program that prints "Hello, world!". </div>
+            <pre>
+              int main() {
+                <input type="text" id="answer0" class="answer"> << "Hello, world!" << endl;
+                return 0;
+              }
+            </pre>
+          </li>
+
+          <li> 
+            <div id="question1" class="question"> 2. What data type should be added to the sequence below to declare a variable representing an integer number?</div>
+            <pre>
+                int main()
+                {
+                  <input type="text" id="answer1" class="answer"> integer_number = 3;
+                  cout << integer_number;
+                }
+            </pre>
+          </li>
+          <li> 
+            <div id="question2" class="question" class="answer"> 3. Replace the placeholders below with the appropriate values. </div>
+            <pre>
+              int main()
+              {
+                <input type="text" id="answer2_1" class="answer"> fin("INPUT_FILE_NAME");
+                fin >> x;
+                fin.<input type="text" id="answer2_2" class="answer">; // to close the file
+              }
+            </pre>
+          </li> 
+          <li> 
+            <div id="question3" class="question" class="answer"> 4. Complete the code to calculate the remainder of dividing two integers x and y.</div>
+            <pre>
+              int main()
+              {
+                int x = 17;
+                int y = 5;
+                int remainder = x <input type="text" id="answer3" class="answer"> y;
+
+                cout << "The remainder of dividing " << x << " by " << y << " is: " << remainder << endl;
+
+                return 0;
+              }
+            </pre>
+          </li>
+          <li>  
+            <div id="question4" class="question"> 5. Complete the code to check if a number z is less than 10.</div>
+            <pre>
+              int main() {
+                int z = 15;
+            
+                if (z <input type="text" id="answer4" class="answer"> 10) {
+                    cout << "The number " << z << " is less than 10" << endl;
+                } else {
+                    cout << "The number " << z << " is not less than 10" << endl;
+                }
+            
+                return 0;
+              }
+            </pre>
+          </li>
+          <li>  
+            <div id="question5" class="question"> 6. Complete the code to calculate the sum of the first 10 natural numbers using a for loop.</div>
+            <pre>
+                int main() {
+                    int sum = 0;
+                    for (int i = <input type="text" id="answer5_1" class="answer">; i <= <input type="text" id="answer5_2" class="answer">; i++) {
+                        sum += i;
+                    }
+                    cout << "The sum of the first 10 natural numbers is: " << sum << endl;
+                    return 0;
+                }
+            </pre>
+          </li>
+          <li> 
+            <div id="question6" class="question"> 7. Complete the code to initialize an array with 5 elements, calculate the sum of the array elements, and display the result.</div>
+            <pre>
+              int main() {
+                  int arr[5] = {1, 2, 3, 4, 5}; 
+                  int sum = 0;
+              
+                  for (int i = 0; i <input type="text" id="answer6_1" class="answer">; i++) {
+                      sum <input type="text" id="answer6_2" class="answer"> arr[i];
+                  }
+              
+                  cout << "The sum of the array elements is: " << sum << endl;
+              
+                  return 0;
+              }
+          </pre>
+          </li>
+          <li>  
+            <div id="question7" class="question"> 8. What result will the following C++ code display? <input type="text" id="answer7" class="answer"> </div>
+            <pre>
+              int recursiveSum(int n) {
+                  if (n <= 0) return 0;
+                  return n + recursiveSum(n - 1);
+              }
+              
+              int main() {
+                  int result = recursiveSum(5);
+                  cout << result;
+                  return 0;
+              }
+            </pre>
+          </li>
+          <li>  
+            <div id="question8" class="question"> 9. What result will the following C++ code display? <input type="text" id="answer8" class="answer"> </div>
+            <pre>
+              void processString(char text[]) {
+                for (int i = 0; text[i] != '\0'; i++) {
+                    if (text[i] >= 'a' && text[i] <= 'z') {
+                        text[i] = text[i] - 'a' + 'A';
+                    }
+                }
+            }
+            
+            int main() {
+                char text[] = "Hello, World!";
+                processString(text);
+                cout << text;
+                return 0;
+            }
+            </pre>
+          </li> 
+        </ul>
+        <br>
+        <a> <button class="button-18 submit-button" role="button" onclick="checkAnswers()">Display Results</button></a>
+    </div>
+    <div class="content">
+    </div>
+  
+    <script src="../scriptnav.js"></script>
+    <script src="../js/tests.js"></script>
+    <script src="../burger-menu.js"></script>
+  
+    <!-- Accessibility Button -->
+    <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="7.5" r="1.5"></circle>
+        <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+        <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M12 20v-8"></path>
+      </svg>
+    </button>
+  
+    <!-- Accessibility Menu -->
+    <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+        <h4>Color Contrast</h4>
+        <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+        <button id="highContrastBtn" class="option-btn">High Contrast</button>
+        <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+        <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Size</h4>
+        <button id="defaultTextBtn" class="option-btn active">Normal</button>
+        <button id="largeTextBtn" class="option-btn">Large</button>
+        <button id="largerTextBtn" class="option-btn">Larger</button>
+        <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Text Spacing</h4>
+        <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+        <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+        <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+        <h4>Reading Aids</h4>
+        <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+        <button id="readableFontBtn" class="option-btn">Readable Font</button>
+        <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+        <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+    </div>
+    
+    <!-- Reading Guide Line -->
+    <div id="reading-guide-line"></div>
+
+    <script src="../js/accessibility-widget.js"></script>
+  </body>
+</html>

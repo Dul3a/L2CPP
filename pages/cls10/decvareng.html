@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+        <ul>
+          <li><a class="logo-link" href="../../indexeng.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+          <li><a href="../../indexeng.html"> Home </a></li>
+          <li><a href="../../pages/class9.html"> 9th Grade </a></li>
+          <li><a href="../../pages/class10.html"> 10th Grade </a></li>
+          <li><a href="../../pages/programaeng.html"> Curriculum </a></li>
+          <li><a href="../../pages/testeng.html"> Test </a></li>
+          <li><a href="../../pagini/cls10/decvar.html"> RO </a></li>
+        </ul>
+      </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograms</button>
+          <div class="panel">
+            <a href="../class10.html"><button class="submenu-btn">Anatomy of a C++ Function</button></a>
+            <a href="defdecfuneng.html"><button class="submenu-btn">Defining and Declaring a C++ Function</button></a>
+            <a href="decvareng.html"><button class="submenu-btn">Declaring Variables</button></a>
+            <a href="tranpareng.html"><button class="submenu-btn">Parameter Passing</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursion</button>
+          <div class="panel">
+            <a href="recursivitateeng.html"><button class="submenu-btn">Recursive Functions</button></a>
+            <a href="recnumeng.html"><button class="submenu-btn">Recursive Functions for Processing Digits of a Number</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimpeng.html"><button class="submenu-btn">Divide et Impera Method</button></a>
+            <a href="mergesorteng.html"><button class="submenu-btn">Merge Sort</button></a>
+            <a href="quicksorteng.html"><button class="submenu-btn">Quick Sort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Character Strings</button>
+          <div class="panel">
+            <a href="asciieng.html"><button class="submenu-btn">ASCII Code</button></a>
+            <a href="decpareng.html"><button class="submenu-btn">Declaring and Iterating a Character String</button></a>
+            <a href="fpredefeng.html"><button class="submenu-btn">Predefined Functions for Character Strings</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Variable Declaration</h1><br><br>
+        <p>In C++, variables can be: local, global, and dynamic. We will only discuss local and global variables.</p><br>
+        <h2>Local Variables</h2>
+        <p>Local variables are declared within a certain block of the program, in the body of a function. Consider the following program:</p>
+        <pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+void F()
+{
+    int x;
+    x = 5;
+    cout << x << endl;
+}
+
+int main()
+{
+    int y = 10;
+    F();
+    cout << y << endl;
+    return 0;
+}</code></pre><br>
+<p>The variables x and y declared in the above program are local. The variable x can only be used in the function F(), and the variable y only in the function main(). Moreover, the two variables could have had the same name and there would have been no confusion.</p><br>
+<p>Local variables follow these rules:</p>
+<ol style="padding-left: 20px;"> 
+  <ul style="padding-left: 13px;">
+      <li>Memory is allocated for them in the stack area</li>
+      <li>They are visible only in the block where they were declared</li>
+      <li>Their lifespan is the execution of the instructions in the block where they were declared</li>
+      <li>They are initialized with random values. More precisely, the C++ standard does not guarantee their initialization with a specific value. This does not mean that local variables cannot be initialized with, for example, 0 in a particular compiler implementation, but we cannot rely on this. Moreover, the compiler used on pbInfo does not initialize local variables with a specific value</li>
+  </ul>
+</ol><br>
+<p><b>Note</b>: The formal parameters of a function follow the properties of a local variable. We cannot declare variables in the function block with the same name as the formal parameters.</p>
+<br><br><h2>Global Variables</h2>
+<p>Global variables are declared outside any function. Upon declaration, they are initialized to 0.</p>
+<pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+int x;
+
+void F()
+{
+    cout << x << endl;
+    x = 10;
+}
+
+int y;
+
+int main()
+{
+    cout << x << " " << y << endl;
+    x = 5; y = 15;
+    F();
+    cout << x << " " << y << endl;
+    return 0;
+}</code></pre><br>
+<p>In the above program, the variables x and y are global. The variable x can be used both in the function main() and in F(), while the variable y only in main().</p><br>
+<p>Global variables follow these rules:</p>
+<ol style="padding-left: 20px;"> 
+  <ul style="padding-left: 13px;">
+      <li>Memory is allocated for them in the data area</li>
+      <li>They are visible in all functions that follow their declaration in the source code</li>
+      <li>Their lifespan is the execution of the entire program</li>
+      <li>They are initialized with the value 0.</li>
+  </ul>
+</ol><br>
+<p><b>Note</b>: In a program, we can have both global and local variables, even global and local variables with the same name. The following program exemplifies this situation. Run it and analyze the displayed values to deduce how they are visible!</p>
+<pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+int x;
+
+void F()
+{
+    cout << x << endl; //5, global variable
+    int x = 10;
+    cout << x << endl; //10, local variable in F()
+    {
+        int x = 20;
+        cout << x << endl; //20, local variable in F(), inner block
+    }
+    cout << x << endl; //10, local variable in F()
+}
+
+int y;
+
+int main()
+{
+    cout << x << endl; //0, global variable
+    x = 5;
+    cout << x << endl; //5, global variable
+    F();
+    cout << x << endl; //5, global variable
+    int x = 100;
+    cout << x << endl; //100, local variable in main()
+    return 0;
+}</code></pre><br>
+<p><b>Note</b>: If a program has variables with the same name but different visibility scopes, the variable with the smallest visibility scope takes precedence. In particular, if there is a global variable and a local variable with the same name, the local variable takes precedence.</p><br>
+<p><b>Note</b>: If we declare a variable in the initialization expression of a for statement, it will only be visible in the control expressions of the for statement and in the block subordinated to it. For example:</p>
+<pre><code class="language-cpp">for(int i =1 ; i <= 10 ; i ++)
+  cout << i << " " ;</code></pre><br>
+
+  <div class="lessons-buttons">
+    <a href="defdecfuneng.html"> <button class="button-18" role="button">Previous Lesson</button></a>
+    <a href="tranpareng.html"> <button class="button-18" role="button">Next Lesson</button></a>
+  </div>  
+</div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+  
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="7.5" r="1.5"></circle>
+      <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+      <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M12 20v-8"></path>
+    </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+    <h3>Accessibility Options</h3>
+    
+    <div class="option-group">
+      <h4>Color Contrast</h4>
+      <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+      <button id="highContrastBtn" class="option-btn">High Contrast</button>
+      <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+      <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Size</h4>
+      <button id="defaultTextBtn" class="option-btn active">Normal</button>
+      <button id="largeTextBtn" class="option-btn">Large</button>
+      <button id="largerTextBtn" class="option-btn">Larger</button>
+      <button id="largestTextBtn" class="option-btn">Largest</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Spacing</h4>
+      <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+      <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+      <button id="widerSpacingBtn" class="option-btn">Wider</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Reading Aids</h4>
+      <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+      <button id="readableFontBtn" class="option-btn">Readable Font</button>
+      <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+      <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+    </div>
+    
+    <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/submenu.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"/>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Learn Programming! </title>
+    <link rel="stylesheet" href="../css/accessibility-widget.css">
+  </head>
+  <body>
+    <nav class ="navbar">
+      <button class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a class="logo-link" href="../indexeng.html"><img class="logo" src="../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../indexeng.html"> Home </a></li>
+        <li><a href="class9.html"> 9th Grade </a></li>
+        <li><a href="class10.html"> 10th Grade </a></li>
+        <li><a href="programaeng.html"> Curriculum </a></li>
+        <li><a href="testeng.html"> Test </a></li>
+        <li><a href="../pagini/clasa10.html"> RO </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar">
+      <div class="accordion">
+        <button class="accordion-btn">Subprograms</button>
+        <div class="panel">
+          <a href="../pages/class10.html"><button class="submenu-btn">Anatomy of a C++ Function</button></a>
+          <a href="../pages/cls10/defdecfuneng.html"><button class="submenu-btn">Defining and Declaring a C++ Function</button></a>
+          <a href="../pages/cls10/decvareng.html"><button class="submenu-btn">Declaring Variables</button></a>
+          <a href="../pages/cls10/tranpareng.html"><button class="submenu-btn">Parameter Passing</button></a>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-btn">Recursion</button>
+        <div class="panel">
+          <a href="../pages/cls10/recursivitateeng.html"><button class="submenu-btn">Recursive Functions</button></a>
+          <a href="../pages/cls10/recnumeng.html"><button class="submenu-btn">Recursive Functions for Processing Digits of a Number</button></a>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-btn">Divide et Impera</button>
+        <div class="panel">
+          <a href="../pages/cls10/divetimpeng.html"><button class="submenu-btn">Divide et Impera Method</button></a>
+          <a href="../pages/cls10/mergesorteng.html"><button class="submenu-btn">Merge Sort</button></a>
+          <a href="../pages/cls10/quicksorteng.html"><button class="submenu-btn">Quick Sort</button></a>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="accordion-btn">Character Strings</button>
+        <div class="panel">
+          <a href="../pages/cls10/asciieng.html"><button class="submenu-btn">ASCII Code</button></a>
+          <a href="../pages/cls10/decpareng.html"><button class="submenu-btn">Declaring and Iterating a Character String</button></a>
+          <a href="../pages/cls10/fpredefeng.html"><button class="submenu-btn">Predefined Functions for Character Strings</button></a>  
+        </div>
+      </div>
+    </div>
+    <div class="inner">
+      <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Subprograms</h1><br><br>
+
+      <p>In C++, a subprogram (also known as a function) is a block of code that performs a specific task and can be called whenever needed in a program. Functions help structure and organize code, making it easier to understand, maintain, and reuse.</p>
+      <br><h3>Example:</h3>
+      
+      <p><i>Given two natural numbers n and m. Determine the sum of the reversed digits of n and m.</i> <a href="ideeng.html?project=oglindit-en"> <button class="button-18" role="button">Try it!</button></a>  </p> 
+
+      <pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+int reverse(int x)
+{
+    int r = 0;
+    do
+    {
+        r = 10 * r + x % 10;
+        x /= 10;
+    }
+    while(x != 0);
+    return r;
+}
+
+int main(){
+    int n , m;
+    cin >> n >> m;
+    cout << reverse(n) + reverse(m);
+    return 0;
+}</code></pre><br><br>
+      <h2>Function Header</h2>
+      <p>The function has a <b>header</b>: <b>int reverse(int x)</b>, from which we deduce that:</p>
+      <ol style="padding-left: 20px;"> 
+        <ul style="padding-left: 13px;">
+            <li>the function is named <b>reverse</b>;</li>
+            <li>the function has one parameter, x, of type int. The parameter is important because it specifies which number's digits are to be reversed:</li>
+            <ul style="padding-left: 40px;">
+              <li>a function can have multiple parameters;</li>
+              <li>parameters appearing in the function header are called formal parameters;</li>
+              <li>function parameters are also called arguments;</li>
+            </ul>
+            <li>the function has a specific type, here int, which specifies the type of the result;</li>
+        </ul>
+      </ol><br><br>
+      <h2>Function Body</h2>
+      <p>The function has a block of statements, the function body, delimited by braces {}, which specifies the operations to obtain the result. Furthermore:</p>
+      <ul style="padding-left: 13px;">
+        <li>the function body can have its own variables (here r);</li>
+        <ul style="padding-left: 40px;">
+          <li>these variables are called local variables;</li>
+          <li>in the function body, the parameter behaves like a local variable;</li>
+          <li>we cannot have a local variable with the same identifier as the formal parameter;</li>
+          <li>in the function body, the values of formal parameters are not known. The function must determine the correct result regardless of their value;</li>
+        </ul>
+        <li>the result determined within the function is returned to the calling program by the return statement. The result is typically computed in the variable r. With the statement <b>return r;</b>, the current value of the variable r is returned to the calling program;</li>
+    </ul></ol><br>
+  <h2>Void Functions</h2>
+  <p>Functions with a return type of void in C++ are functions that do not return any value. These functions are used to perform actions or operations that do not require an explicit result. Usually, void functions are used to manipulate data, display information on the screen, or perform other auxiliary actions within a program.</p><br>
+  <h3>Characteristics of void Functions:</h3>
+  <ol style="padding-left: 20px;"> 
+    <ul style="padding-left: 13px;">
+        <li>Have no return value: Instead of returning a specific value, void functions terminate their execution and return to the point where they were called.</li>
+        <li>Can have parameters: Like other functions, void functions can accept one or more parameters to perform their task.</li>
+        <li>Structure similar to other functions: The main difference lies in the return type, which is void.</li>
+    </ul>
+  </ol><br>
+  <h3>Example: <a href="ideeng.html?project=functie-en"> <button class="button-18" role="button">Try it!</button></a> </h3>
+  <pre><code class="language-cpp">#include < iostream >
+using namespace std;
+
+// Function that displays a greeting message
+void greet()
+{
+    cout << "Hello! Welcome!" << endl;
+}
+
+int main()
+{
+    greet(); // Calling the greet function
+    return 0;
+}</code></pre><br>
+<p>In this example, the greet function displays a message on the screen and does not return any value.</p><br>
+  <a href="./cls10/defdecfuneng.html"> <button class="button-18" role="button">Next Lesson</button></a>   
+</div>
+  <script src="../submenu.js"></script>
+  <script src="../scriptnav.js"></script>
+  <script src="../burger-menu.js"></script>
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="7.5" r="1.5"></circle>
+      <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+      <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+      <path d="M12 20v-8"></path>
+    </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+    <h3>Accessibility Options</h3>
+    
+    <div class="option-group">
+      <h4>Color Contrast</h4>
+      <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+      <button id="highContrastBtn" class="option-btn">High Contrast</button>
+      <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+      <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Size</h4>
+      <button id="defaultTextBtn" class="option-btn active">Normal</button>
+      <button id="largeTextBtn" class="option-btn">Large</button>
+      <button id="largerTextBtn" class="option-btn">Larger</button>
+      <button id="largestTextBtn" class="option-btn">Largest</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Text Spacing</h4>
+      <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+      <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+      <button id="widerSpacingBtn" class="option-btn">Wider</button>
+    </div>
+    
+    <div class="option-group">
+      <h4>Reading Aids</h4>
+      <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+      <button id="readableFontBtn" class="option-btn">Readable Font</button>
+      <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+      <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+    </div>
+    
+    <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../js/accessibility-widget.js"></script>
+  </body>
+</html>

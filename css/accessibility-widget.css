@@ -1,0 +1,197 @@
+/* Accessibility Button */
+#accessibilityBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #2050b3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border: 2px solid white;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+#accessibilityBtn:hover {
+    transform: scale(1.1);
+    background-color: #1a3f8e;
+}
+
+/* Accessibility Menu */
+#accessibilityMenu {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 999;
+    display: none;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#accessibilityMenu.active {
+    display: block;
+}
+
+#accessibilityMenu h3 {
+    margin-top: 0;
+    text-align: center;
+    color: #2050b3;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+/* Option Groups */
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Pretty Buttons */
+.option-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: #333;
+}
+
+.option-btn:hover {
+    background-color: #e9e9e9;
+    border-color: #ccc;
+}
+
+.option-btn.active {
+    background-color: #2050b3;
+    color: white;
+    border-color: #0d3d8e;
+}
+
+/* Reset button */
+#resetBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#resetBtn:hover {
+    background-color: #d32f2f;
+}
+
+/* Applied styles */
+body.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4 {
+    color: yellow;
+}
+
+body.high-contrast a {
+    color: #00ccff;
+}
+
+body.yellow-black {
+    background-color: black;
+    color: yellow;
+}
+
+body.yellow-black a {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+body.black-yellow {
+    background-color: yellow;
+    color: black;
+}
+
+body.large-text {
+    font-size: 18px;
+}
+
+body.larger-text {
+    font-size: 20px;
+}
+
+body.largest-text {
+    font-size: 24px;
+}
+
+body.increased-spacing {
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+body.wider-spacing {
+    line-height: 2.5;
+    letter-spacing: 2px;
+}
+
+body.highlight-links a {
+    background-color: yellow;
+    color: blue;
+    text-decoration: underline;
+    padding: 0 3px;
+}
+
+body.highlight-titles h1,
+body.highlight-titles h2,
+body.highlight-titles h3,
+body.highlight-titles h4,
+body.highlight-titles h5,
+body.highlight-titles h6 {
+    background-color: #ffff99;
+    padding: 5px;
+}
+
+body.reading-guide {
+    position: relative;
+}
+
+#reading-guide-line {
+    position: fixed;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    background-color: rgba(255, 255, 0, 0.2);
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+} 

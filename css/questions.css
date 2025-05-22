@@ -1,0 +1,72 @@
+.questions{
+    margin-left: 10px;
+    margin-right: 10px;
+    list-style: none;
+}
+.question{
+    margin-top: 20px;
+}
+
+input{
+    color: red;
+    border-radius: 5px;
+    font-weight: bold;
+
+}
+#answer0{
+    width: 35px;
+
+}
+
+#answer1{
+    padding-left: 5px;
+    width: 35px;
+
+}
+
+#answer2_1{
+    width: 60px;
+}
+
+#answer2_2{
+    width: 50px;
+}
+
+#answer3{
+    padding-left: 5px;
+    width: 20px;
+}
+
+#answer4{
+    padding-left: 5px;
+    width: 20px;
+}
+
+#answer5_1{
+    padding-left: 5px;
+    width: 20px;
+}
+#answer5_2{
+    padding-left: 5px;
+    width: 20px;
+}
+#answer6_1{
+    width: 25px;
+}
+
+#answer6_2{
+    width: 25px;
+}
+
+#answer7{
+    width: 25px;
+}
+
+#answer8{
+    width: 115px;
+}
+
+.submit-button{
+    display: block;
+    margin: 0 auto;
+}

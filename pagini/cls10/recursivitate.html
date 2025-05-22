@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/submenu.css"/>
+    <link rel="stylesheet" href="../../css/accessibility-widget.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png" />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title> L2C++ - Învață programare! </title>
+  </head>
+  <body>
+    <nav class ="navbar">
+      <ul>
+        <li><a class="logo-link" href="../../index.html"><img class="logo" src="../../Images & Videos/L2C++ LOGO 500x500.png" alt=""></a></li>
+        <li><a href="../../index.html"> Acasă </a></li>
+        <li><a href="../../pagini/clasa9.html"> Clasa a IX-a </a></li>
+        <li><a href="../../pagini/clasa10.html"> Clasa a X-a </a></li>
+        <li><a href="../../pagini/programa.html"> Programă </a></li>
+        <li><a href="../../pagini/test.html"> Test </a></li>
+        <li><a href="../../pages/cls10/recursivitateeng.html"> EN </a></li>
+      </ul>
+    </nav>
+    </section>
+    <div class="sidebar">
+        <div class="accordion">
+          <button class="accordion-btn">Subprograme</button>
+          <div class="panel">
+            <a href="../../pagini/clasa10.html"><button class="submenu-btn">Anatomia unei funcții C++</button></a>
+            <a href="defdecfun.html"><button class="submenu-btn">Definirea și declararea unei funcții C++</button></a>
+            <a href="decvar.html"><button class="submenu-btn">Declararea variabilelor</button></a>
+            <a href="tranpar.html"><button class="submenu-btn">Transmiterea parametrilor</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Recursivitate</button>
+          <div class="panel">
+            <a href="recursivitate.html"><button class="submenu-btn">Funcțiile recursive</button></a>
+            <a href="recnum.html"><button class="submenu-btn">Funcții recursive pentru prelucarea cifrelor unui număr</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Divide et Impera</button>
+          <div class="panel">
+            <a href="divetimp.html"><button class="submenu-btn">Metoda Divide et Impera</button></a>
+            <a href="mergesort.html"><button class="submenu-btn">Sortarea prin interclasare - MergeSort</button></a>
+            <a href="quicksort.html"><button class="submenu-btn">Sortarea rapidă - QuickSort</button></a>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn">Șiruri de caractere</button>
+          <div class="panel">
+            <a href="ascii.html"><button class="submenu-btn">Codul ASCII</button></a>
+            <a href="decpar.html"><button class="submenu-btn">Declararea și parcurgerea unui șir de caractere</button></a>
+            <a href="fpredef.html"><button class="submenu-btn">Funcții predefinite pentru șiruri de caractere</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <h1 style="z-index: 3; padding-top: 60px; text-align: center;">Funcțiile recursive</h1><br><br>
+        <p><b>Recursivitatea</b> reprezintă proprietatea unor noțiuni de a se defini prin ele însele.</p><br>
+        <p>În C++, recursivitatea se realizează prin intermediul funcțiilor, care se pot autoapela. Ne amintim că o funcție trebuie definită iar apoi se poate apela. Recursivitatea constă în faptul că în definiția unei funcție apare apelul ei însăși. Acest apel, care apare în însăși definiția funcției, se numește autoapel. Primul apel, făcut în altă funcție, se numește apel principal.</p><br>
+        <h3>Exemplu:</h3>
+        <p>Să scriem o funcție C++ care returnează factorialul unui număr natural transmis ca parametru. Varianta nerecursivă (iterativă) este următoarea:</p>
+        <pre><code class="language-cpp">int fact(int n)
+{
+    int p = 1;
+    for(int i = 1 ; i <= n ; i ++)
+        p = p * i;
+    return p;
+}</code></pre><br>
+<p>Să observăm că această funcție determină rezultatul corect pentru valori ale lui n mai mari sau egale cu 0 (valori mici, practic n <= 12). Funcția determină corect rezultatul și pentru n == 0.</p><br>
+<p>O variantă recursivă pentru determinarea lui n!, care folosește observațiile de mai sus, este:</p>
+<pre><code class="language-cpp">int fact(int n)
+{
+    if(n == 0)
+        return 1;
+    else
+        return n * fact(n-1);
+}</code></pre><br>
+<h3>Observații:</h3>
+<ol style="padding-left: 20px;"> 
+    <ul style="padding-left: 13px;">
+        <li>este obligatoriu ca în definiția unei funcții recursive să apară cazul particular (în care să nu aibă loc autoapelul). În caz contrar autoapelurile vor avea loc "la nesfârșit". De fapt, în urma prea multor autoapeluri, stiva se va ocupa în totalitate și execuția programului se va întrerupe.</li>
+        <li>este obligatoriu ca, pentru cazurile neelementare, valorile la autoapel a parametrilor să se apropie de valorile din cazul elementar. Altfel se va întâmpla situația descrisă mai sus: stiva se va ocupa în totalitate și programul se va opri, fără a determina/afișa rezultatele dorite :).</li>
+    </ul>
+  </ol><br>
+  <h3>Cum facem autoapelul?</h3>
+  <p>Autoapelul se face în conformitate cu antetul funcției recursive. Astfel:</p>
+  <ol style="padding-left: 20px;"> 
+    <ul style="padding-left: 13px;">
+        <li>dacă funcția recursivă este de tip non-void, autoapelul se va face într-o expresie;</li>
+        <li>dacă funcția recursivă este de tip void, autoapelul se va face într-o instrucțiune de sine stătătoare; dacă funcția întoarce valori, se vor folosi parametri de ieșire.</li>
+    </ul>
+  </ol><br>
+  <h3>Exemple:</h3><br>
+
+  <h3>Funcție de tip void</h3>
+  <pre><code class="language-cpp">void fact(int n, int &r)
+{
+    if(n == 0)
+        r = 1;
+    else{
+        fact(n - 1 , r);
+        r = r * n;
+    }
+}
+int main()
+{
+    int a;
+    fact(4, a);
+    cout << a;
+    return 0;
+}</code></pre><br>
+
+<h3>Funcție de tip non-void</h3>
+  <pre><code class="language-cpp">int fact(int n)
+{
+    int r;
+    if(n == 0)
+        r = 1;
+    else
+        r = n * fact(n - 1);
+    return r;
+}
+int main()
+{
+    int a;
+    a = fact(4);
+    cout << a;
+    return 0;
+}</code></pre><br>
+  <div class="lessons-buttons">
+    <a href="tranpar.html"> <button class="button-18" role="button">Lectia Anterioara</button></a>
+    <a href="recnum.html"> <button class="button-18" role="button">Urmatoarea lectie</button></a>
+  </div>
+      </div>
+  <script src="../../submenu.js"></script>
+  <script src="../../scriptnav.js"></script>
+  <script src="../../burger-menu.js"></script>
+
+  <!-- Accessibility Button -->
+  <button id="accessibilityBtn" aria-label="Accessibility Options">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="7.5" r="1.5"></circle>
+          <path d="M9.5 15l2.5-3.5 2.5 3.5"></path>
+          <path d="M18 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M6 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+          <path d="M12 20v-8"></path>
+      </svg>
+  </button>
+  
+  <!-- Accessibility Menu -->
+  <div id="accessibilityMenu">
+      <h3>Accessibility Options</h3>
+      
+      <div class="option-group">
+          <h4>Color Contrast</h4>
+          <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+          <button id="highContrastBtn" class="option-btn">High Contrast</button>
+          <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+          <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Size</h4>
+          <button id="defaultTextBtn" class="option-btn active">Normal</button>
+          <button id="largeTextBtn" class="option-btn">Large</button>
+          <button id="largerTextBtn" class="option-btn">Larger</button>
+          <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Text Spacing</h4>
+          <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+          <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+          <button id="widerSpacingBtn" class="option-btn">Wider</button>
+      </div>
+      
+      <div class="option-group">
+          <h4>Reading Aids</h4>
+          <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+          <button id="readableFontBtn" class="option-btn">Readable Font</button>
+          <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+          <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+      </div>
+      
+      <button id="resetBtn">Reset All Settings</button>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
+
+  <script src="../../js/accessibility-widget.js"></script>
+  </body>
+</html>
