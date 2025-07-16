@@ -9,15 +9,25 @@ async function generateSummary(text) {
             body: JSON.stringify({ text })
         });
         
+        console.log('Response status:', response.status);
+        
         if (!response.ok) {
-            throw new Error('Eroare la cererea către server');
+            const errorData = await response.text();
+            console.error('Server error:', errorData);
+            throw new Error(`Server error: ${response.status} - ${errorData}`);
         }
         
         const data = await response.json();
+        console.log('Response data:', data);
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
         return data.summary;
     } catch (error) {
-        console.error('Eroare:', error);
-        return 'Eroare la generarea rezumatului. Te rog să încerci din nou.';
+        console.error('Eroare completă:', error);
+        return `Eroare: ${error.message}`;
     }
 }
 
