@@ -195,3 +195,27 @@ body.reading-guide {
     z-index: 1000;
     display: none;
 } 
+
+.accessibility-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.tab-btn {
+    padding: 6px 16px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.tab-btn.active {
+    background: #d1eaff;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+} 

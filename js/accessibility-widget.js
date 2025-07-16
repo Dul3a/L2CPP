@@ -367,3 +367,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load saved settings on page load
     loadSavedSettings();
 }); 
+
+// Tab switching logic for accessibility widget
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    function showTab(tabName) {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        document.getElementById('tab-' + tabName).classList.add('active');
+        document.getElementById('content-' + tabName).classList.add('active');
+    }
+
+    // Set default tab
+    showTab('options');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tab = this.id.replace('tab-', '');
+            showTab(tab);
+        });
+    });
+}); 
