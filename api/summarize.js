@@ -1,6 +1,7 @@
 // api/summarize.js
 export default async function handler(req, res) {
     console.log('=== DEBUG START ===');
+    console.log('Hugging Face API Key exists:', !!process.env.HUGGINGFACE_API_KEY);
     
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Metoda nu este permisă' });
@@ -10,12 +11,18 @@ export default async function handler(req, res) {
         const { text } = req.body;
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
         
+        if (!process.env.HUGGINGFACE_API_KEY) {
+            console.error('HUGGINGFACE_API_KEY nu este setată');
+            return res.status(500).json({ error: 'API key nu este configurată' });
+        }
+        
         console.log('Making request to Hugging Face...');
         
         const response = await fetch('https://api-inference.huggingface.co/models/facebook/bart-large-cnn', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`
             },
             body: JSON.stringify({
                 inputs: text
