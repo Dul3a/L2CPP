@@ -154,49 +154,75 @@
     
     <!-- Accessibility Menu -->
     <div id="accessibilityMenu">
-        <h3>Accessibility Options</h3>
-        
-        <div class="option-group">
-            <h4>Color Contrast</h4>
-            <button id="defaultContrastBtn" class="option-btn active">Normal</button>
-            <button id="highContrastBtn" class="option-btn">High Contrast</button>
-            <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
-            <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+      <!-- Bara de navigare cu cele 3 secțiuni -->
+      <div class="accessibility-tabs">
+          <button class="tab-btn active" id="tab-options">Options</button>
+          <button class="tab-btn" id="tab-summary">Summary</button>
+          <button class="tab-btn" id="tab-chatbot">Chatbot</button>
+      </div>
+  
+      <!-- Conținutul secțiunilor -->
+      <div class="tab-content active" id="content-options">
+          <!-- Aici pui tot ce aveai înainte la Accessibility Options -->
+          <div class="option-group">
+              <h4>Color Contrast</h4>
+              <button id="defaultContrastBtn" class="option-btn active">Normal</button>
+              <button id="highContrastBtn" class="option-btn">High Contrast</button>
+              <button id="yellowBlackBtn" class="option-btn">Yellow on Black</button>
+              <button id="blackYellowBtn" class="option-btn">Black on Yellow</button>
+          </div>
+          <div class="option-group">
+              <h4>Text Size</h4>
+              <button id="defaultTextBtn" class="option-btn active">Normal</button>
+              <button id="largeTextBtn" class="option-btn">Large</button>
+              <button id="largerTextBtn" class="option-btn">Larger</button>
+              <button id="largestTextBtn" class="option-btn">Largest</button>
+          </div>
+          <div class="option-group">
+              <h4>Text Spacing</h4>
+              <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
+              <button id="increasedSpacingBtn" class="option-btn">Increased</button>
+              <button id="widerSpacingBtn" class="option-btn">Wider</button>
+          </div>
+          <div class="option-group">
+              <h4>Reading Aids</h4>
+              <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
+              <button id="readableFontBtn" class="option-btn">Readable Font</button>
+              <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
+              <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
+          </div>
+          <button id="resetBtn">Reset All Settings</button>
+      </div>
+      <div class="tab-content" id="content-summary">
+          <br><p>
+              În această secțiune poți genera un rezumat al conținutului paginii folosind AI! Fii liber să folosești
+              butonul de mai jos oricând ești pe grabă și nu ai timp să înveți tot!
+          </p> <br>
+          <div class="summary-center">
+            <img src="Images & Videos/sumary_img.png" alt="Summary" class="summary-img">
+            <button class="summary-btn" id="generateSummaryBtn">Rezumat</button>
         </div>
-        
-        <div class="option-group">
-            <h4>Text Size</h4>
-            <button id="defaultTextBtn" class="option-btn active">Normal</button>
-            <button id="largeTextBtn" class="option-btn">Large</button>
-            <button id="largerTextBtn" class="option-btn">Larger</button>
-            <button id="largestTextBtn" class="option-btn">Largest</button>
+      </div>
+      <div class="tab-content" id="content-chatbot">
+        <br><p>
+          În această secțiune poți întreba expertul nostru robot orice legat de nelămuririle pe care le-ai întâlnit de-a lungul lecțiilor!
+          Fii liber să folosești butonul de mai jos oricând ai nevoie de explicații adiționale!
+            </p> <br>
+        <div class="summary-center">
+            <img src="Images & Videos/robot.png" alt="Chatbot" class="chatbot-img">
+            <button class="summary-btn" id="generateSummaryBtn">Chatbot</button>
         </div>
-        
-        <div class="option-group">
-            <h4>Text Spacing</h4>
-            <button id="defaultSpacingBtn" class="option-btn active">Normal</button>
-            <button id="increasedSpacingBtn" class="option-btn">Increased</button>
-            <button id="widerSpacingBtn" class="option-btn">Wider</button>
-        </div>
-        
-        <div class="option-group">
-            <h4>Reading Aids</h4>
-            <button id="highlightLinksBtn" class="option-btn">Highlight Links</button>
-            <button id="readableFontBtn" class="option-btn">Readable Font</button>
-            <button id="highlightTitlesBtn" class="option-btn">Highlight Titles</button>
-            <button id="readingGuideBtn" class="option-btn">Reading Guide</button>
-        </div>
-        
-        <button id="resetBtn">Reset All Settings</button>
-    </div>
-    
-    <!-- Reading Guide Line -->
-    <div id="reading-guide-line"></div>
+      </div>
+  </div>
+  
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
 
     <script src="script.js"></script>
     <script src="js/carousel.js"></script>
     <script src="slideshow.js"></script>
     <script src="burger-menu.js"></script>
     <script src="js/accessibility-widget.js"></script>
+    <script src="js/summary.js"></script>
   </body>
 </html>
