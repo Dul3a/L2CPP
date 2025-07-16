@@ -268,3 +268,23 @@ body.reading-guide {
     margin-left: 4px;
     display: block;
 }
+
+.summary-result {
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 4px solid #2050b3;
+}
+
+.summary-result h4 {
+    margin: 0 0 8px 0;
+    color: #2050b3;
+    font-size: 14px;
+}
+
+.summary-result p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
