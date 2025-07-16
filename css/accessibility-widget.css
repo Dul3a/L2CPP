@@ -218,4 +218,53 @@ body.reading-guide {
 }
 .tab-content.active {
     display: block;
-} 
+}
+#content-summary {
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+}
+.summary-btn {
+    display: block;
+    margin: 16px auto 0 auto; /* centrează pe orizontală */
+    padding: 8px 12px;
+    background-color: #2050b3;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: white;
+    border-color: #0d3d8e;
+}
+.summary-btn:hover {
+    background-color: #357ae8;
+    color: white;
+    border-color: #2050b3;
+}
+.summary-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-img {
+    width: 80px;     
+    height: auto;
+    margin-bottom: 2px;
+    margin-left: 14px;
+    display: block;
+}
+#content-chatbot {
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+}
+.chatbot-img {
+    width: 80px;     
+    height: auto;
+    margin-bottom: 2px;
+    margin-left: 4px;
+    display: block;
+}
