@@ -31,6 +31,15 @@ async function generateSummary(text) {
     }
 }
 
+// Funcție pentru a detecta limba paginii
+function getPageLang() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('eng.html') || path.includes('class9.html') || path.includes('class10.html')) {
+        return 'en';
+    }
+    return 'ro';
+}
+
 // Funcția pentru extragerea textului din pagină
 function extractPageText() {
     // Extrage textul din elementele principale ale paginii
@@ -54,6 +63,10 @@ function displaySummary(summary) {
         existingModal.remove();
     }
 
+    // Detectează limba paginii
+    const lang = getPageLang();
+    const titleText = lang === 'en' ? 'Generated summary' : 'Rezumat generat';
+
     // Creează overlay-ul
     const overlay = document.createElement('div');
     overlay.id = 'summary-modal-overlay';
@@ -67,14 +80,14 @@ function displaySummary(summary) {
     const closeButton = document.createElement('button');
     closeButton.className = 'summary-modal-close';
     closeButton.innerHTML = '&times;';
-    closeButton.title = 'Închide';
+    closeButton.title = lang === 'en' ? 'Close' : 'Închide';
     closeButton.onclick = function() {
         overlay.remove();
     };
 
     // Titlu și rezumat
     const title = document.createElement('h3');
-    title.textContent = 'Rezumat generat';
+    title.textContent = titleText;
     const summaryText = document.createElement('p');
     summaryText.textContent = summary;
 
@@ -95,8 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const summaryBtn = document.getElementById('generateSummaryBtn');
     if (summaryBtn) {
         summaryBtn.addEventListener('click', async function() {
+            // Detectează limba paginii
+            const lang = getPageLang();
             // Schimbă textul butonului pentru a arăta că se procesează
-            this.textContent = 'Se generează...';
+            this.textContent = lang === 'en' ? 'Generating...' : 'Se generează...';
             this.disabled = true;
             
             try {
@@ -105,10 +120,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 displaySummary(summary);
             } catch (error) {
                 console.error('Eroare:', error);
-                displaySummary('Eroare la generarea rezumatului. Te rog să încerci din nou.');
+                displaySummary(lang === 'en' ? 'Error generating summary. Please try again.' : 'Eroare la generarea rezumatului. Te rog să încerci din nou.');
             } finally {
                 // Restorează butonul
-                this.textContent = 'Rezumat';
+                this.textContent = lang === 'en' ? 'Summary' : 'Rezumat';
                 this.disabled = false;
             }
         });
