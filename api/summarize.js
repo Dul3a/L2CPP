@@ -7,8 +7,17 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Metoda nu este permisă' });
     }
 
+    // O funcție simplă pentru a detecta limba (poți folosi și o librărie mai avansată dacă vrei)
+    function detectLang(text) {
+        // Dacă textul conține diacritice românești, presupunem că e română
+        if (/[ăâîșțĂÂÎȘȚ]/.test(text)) return 'ro';
+        // Dacă are multe cuvinte englezești, poți adăuga logică suplimentară
+        return 'en';
+    }
+
     try {
         const { text } = req.body;
+        const lang = detectLang(text);
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
         
         if (!process.env.HUGGINGFACE_API_KEY) {
@@ -18,7 +27,14 @@ export default async function handler(req, res) {
         
         console.log('Making request to Hugging Face...');
         
-        const response = await fetch('https://api-inference.huggingface.co/models/facebook/bart-large-cnn', {
+        let modelUrl;
+        if (lang === 'ro') {
+            modelUrl = 'https://api-inference.huggingface.co/models/readerbench/RoSummary-large';
+        } else {
+            modelUrl = 'https://api-inference.huggingface.co/models/Falconsai/text_summarization';
+        }
+        
+        const response = await fetch(modelUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
