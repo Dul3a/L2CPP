@@ -34,7 +34,7 @@ export default async function handler(req, res) {
             modelUrl = 'https://api-inference.huggingface.co/models/Falconsai/text_summarization';
         }
         
-        const response = await fetch(modelUrl, {
+        const response = await fetch('https://api-inference.huggingface.co/models/csebuetnlp/mT5_multilingual_XLSum', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
