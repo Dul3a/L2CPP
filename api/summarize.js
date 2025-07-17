@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         
         console.log('Making request to Hugging Face...');
         
-        const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1', {
+        const response = await fetch('https://api-inference.huggingface.co/models/google/flan-t5-large', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
