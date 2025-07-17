@@ -288,3 +288,64 @@ body.reading-guide {
     font-size: 13px;
     line-height: 1.4;
 }
+
+/* === Summary Modal Overlay === */
+.summary-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(32, 80, 179, 0.75); /* albastru semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.summary-modal-content {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 32px 28px 24px 28px;
+    max-width: 480px;
+    width: 90vw;
+    text-align: center;
+    position: relative;
+    animation: summary-modal-fadein 0.25s;
+}
+
+@keyframes summary-modal-fadein {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.summary-modal-content h3 {
+    margin-top: 0;
+    color: #2050b3;
+    font-size: 1.4em;
+    margin-bottom: 16px;
+}
+
+.summary-modal-content p {
+    font-size: 1.1em;
+    color: #222;
+    margin-bottom: 0;
+    word-break: break-word;
+}
+
+.summary-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 2em;
+    color: #2050b3;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+.summary-modal-close:hover {
+    color: #f44336;
+}
