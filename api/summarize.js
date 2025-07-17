@@ -31,37 +31,38 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: 'API key nu este configurată' });
         }
         
-        console.log('Making request to Hugging Face...');
+        console.log('Making request to OpenRouter...');
         
-        const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Magistral-Small-2506', {
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}`,
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}`
             },
             body: JSON.stringify({
-                inputs: prompt,
-                parameters: {
-                    max_new_tokens: 256,
-                    temperature: 0.7,
-                    top_p: 0.95,
-                    do_sample: false
-                }
+                model: 'mistralai/mistral-7b-instruct:free',
+                messages: [
+                    {
+                        role: 'user',
+                        content: prompt
+                    }
+                ]
             })
         });
         
-        console.log('Hugging Face response status:', response.status);
+        console.log('OpenRouter response status:', response.status);
         
         if (!response.ok) {
             const errorData = await response.text();
-            console.error('Hugging Face API error:', response.status, errorData);
+            console.error('OpenRouter API error:', response.status, errorData);
             return res.status(response.status).json({ error: `API error: ${response.status} - ${errorData}` });
         }
         
         const data = await response.json();
-        const summary = Array.isArray(data) && data[0]?.generated_text
-            ? data[0].generated_text.replace(prompt, '').trim()
-            : (data.generated_text || '').replace(prompt, '').trim();
+        // Extrage răspunsul generat de model
+        const summary = data.choices && data.choices[0]?.message?.content
+            ? data.choices[0].message.content.trim()
+            : '';
 
         res.json({ summary });
     } catch (error) {
