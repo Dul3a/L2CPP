@@ -115,7 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
             this.disabled = true;
             
             try {
-                const pageText = extractPageText();
+                const pageText = extractPageText().slice(0, 2000);
+                if (!pageText.trim()) {
+                    displaySummary(lang === 'en' ? 'No content found to summarize.' : 'Nu a fost găsit conținut de rezumat.');
+                    return;
+                }
                 const summary = await generateSummary(pageText);
                 displaySummary(summary);
             } catch (error) {
