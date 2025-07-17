@@ -18,6 +18,12 @@ export default async function handler(req, res) {
     try {
         const { text } = req.body;
         const lang = detectLang(text);
+        let prompt;
+        if (lang === 'ro') {
+            prompt = `Rezumă următorul text în limba română, într-un stil clar și concis:\n"""\n${text}\n"""`;
+        } else {
+            prompt = `Summarize the following text in English, in a clear and concise style:\n"""\n${text}\n"""`;
+        }
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
         
         if (!process.env.HUGGINGFACE_API_KEY) {
@@ -27,21 +33,19 @@ export default async function handler(req, res) {
         
         console.log('Making request to Hugging Face...');
         
-        let modelUrl;
-        if (lang === 'ro') {
-            modelUrl = 'https://api-inference.huggingface.co/models/readerbench/RoSummary-large';
-        } else {
-            modelUrl = 'https://api-inference.huggingface.co/models/Falconsai/text_summarization';
-        }
-        
-        const response = await fetch('https://api-inference.huggingface.co/models/csebuetnlp/mT5_multilingual_XLSum', {
+        const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`
             },
             body: JSON.stringify({
-                inputs: text
+                inputs: prompt,
+                parameters: {
+                    max_new_tokens: 256,
+                    temperature: 0.7,
+                    do_sample: false
+                }
             })
         });
         
@@ -54,12 +58,10 @@ export default async function handler(req, res) {
         }
         
         const data = await response.json();
-        console.log('Hugging Face response data:', JSON.stringify(data, null, 2));
-        
-        // Hugging Face returnează un array cu rezumatul
-        const summary = Array.isArray(data) ? data[0].summary_text : data.summary_text;
-        console.log('Summary generated:', summary);
-        
+        const summary = Array.isArray(data) && data[0]?.generated_text
+            ? data[0].generated_text.replace(prompt, '').trim()
+            : (data.generated_text || '').replace(prompt, '').trim();
+
         res.json({ summary });
     } catch (error) {
         console.error('Eroare completă:', error);
