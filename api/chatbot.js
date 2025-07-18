@@ -22,7 +22,7 @@ export default async function handler(req, res) {
             body: JSON.stringify({
                 model: 'gpt-4.1-nano-2025-04-14',
                 messages: [
-                    { role: 'system', content: 'Ești un asistent AI prietenos și util. Răspunde pe scurt și clar.' },
+                    { role: 'system', content: 'Ești un asistent AI prietenos și util, expert mai ales în limbajul de programare C++. Răspunde pe scurt și clar.' },
                     { role: 'user', content: message }
                 ]
             })

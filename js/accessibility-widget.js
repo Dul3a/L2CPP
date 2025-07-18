@@ -564,6 +564,11 @@ function createChatbotModal() {
         messages.appendChild(msg);
         messages.scrollTop = messages.scrollHeight;
     }
+
+    sendBtn.onclick = sendMessage;
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
 }
 
 // Deschide chatbot la click pe buton
