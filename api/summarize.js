@@ -26,8 +26,8 @@ export default async function handler(req, res) {
         }
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
         
-        if (!process.env.MISTRAL_API_KEY) {
-            console.error('MISTRAL_API_KEY nu este setată');
+        if (!process.env.OPENAI_API_KEY) {
+            console.error('OPENAI_API_KEY nu este setată');
             return res.status(500).json({ error: 'API key nu este configurată' });
         }
         
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'gpt-4-1106-nano',
+                model: 'gpt-4.1-nano-2025-04-14',
                 messages: [
                     {
                         role: 'user',
