@@ -1,4 +1,4 @@
-// Funcția pentru generarea rezumatului
+// Functia pentru generarea rezumatului
 async function generateSummary(text) {
     try {
         const response = await fetch('/api/summarize', {
@@ -31,7 +31,7 @@ async function generateSummary(text) {
     }
 }
 
-// Funcție pentru a detecta limba paginii
+// Functie pentru a detecta limba paginii
 function getPageLang() {
     const path = window.location.pathname.toLowerCase();
     if (path.includes('eng.html') || path.includes('class9.html') || path.includes('class10.html')) {
@@ -40,9 +40,8 @@ function getPageLang() {
     return 'ro';
 }
 
-// Funcția pentru extragerea textului din pagină
+// Functia pentru extragerea textului din pagina
 function extractPageText() {
-    // Extrage textul din elementele principale ale paginii
     const contentElements = document.querySelectorAll('h1, h2, h3, p, li');
     let text = '';
     
@@ -55,28 +54,25 @@ function extractPageText() {
     return text.trim();
 }
 
-// Funcția pentru afișarea rezumatului
+// Functia pentru afisarea rezumatului
 function displaySummary(summary) {
-    // Verifică dacă există deja modalul și îl elimină
     const existingModal = document.getElementById('summary-modal-overlay');
     if (existingModal) {
         existingModal.remove();
     }
 
-    // Detectează limba paginii
     const lang = getPageLang();
     const titleText = lang === 'en' ? 'Generated summary' : 'Rezumat generat';
 
-    // Creează overlay-ul
+    // Creeaza overlay-ul
     const overlay = document.createElement('div');
     overlay.id = 'summary-modal-overlay';
     overlay.className = 'summary-modal-overlay';
 
-    // Creează conținutul modalului
     const modal = document.createElement('div');
     modal.className = 'summary-modal-content';
 
-    // Buton de închidere
+    // Buton de inchidere
     const closeButton = document.createElement('button');
     closeButton.className = 'summary-modal-close';
     closeButton.innerHTML = '&times;';
@@ -85,32 +81,27 @@ function displaySummary(summary) {
         overlay.remove();
     };
 
-    // Titlu și rezumat
+    // Titlu si rezumat
     const title = document.createElement('h3');
     title.textContent = titleText;
     const summaryText = document.createElement('p');
     summaryText.textContent = summary;
 
-    // Adaugă elementele în modal
     modal.appendChild(closeButton);
     modal.appendChild(title);
     modal.appendChild(summaryText);
 
-    // Adaugă modalul în overlay
     overlay.appendChild(modal);
 
-    // Adaugă overlay-ul în body
     document.body.appendChild(overlay);
 }
 
-// Adaugă event listener pentru butonul "Rezumat"
 document.addEventListener('DOMContentLoaded', function() {
     const summaryBtn = document.getElementById('generateSummaryBtn');
     if (summaryBtn) {
         summaryBtn.addEventListener('click', async function() {
-            // Detectează limba paginii
             const lang = getPageLang();
-            // Schimbă textul butonului pentru a arăta că se procesează
+            // Aici schimb textul butonului pentru a arata ca se genereaza
             this.textContent = lang === 'en' ? 'Generating...' : 'Se generează...';
             this.disabled = true;
             
@@ -126,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Eroare:', error);
                 displaySummary(lang === 'en' ? 'Error generating summary. Please try again.' : 'Eroare la generarea rezumatului. Te rog să încerci din nou.');
             } finally {
-                // Restorează butonul
                 this.textContent = lang === 'en' ? 'Summary' : 'Rezumat';
                 this.disabled = false;
             }

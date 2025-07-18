@@ -7,11 +7,9 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Metoda nu este permisă' });
     }
 
-    // O funcție simplă pentru a detecta limba (poți folosi și o librărie mai avansată dacă vrei)
+    // Aceasta functie este pentru a detecta limba, ca sa stim ce prompt dam AI-ului
     function detectLang(text) {
-        // Dacă textul conține diacritice românești, presupunem că e română
         if (/[ăâîșțĂÂÎȘȚ]/.test(text)) return 'ro';
-        // Dacă are multe cuvinte englezești, poți adăuga logică suplimentară
         return 'en';
     }
 
@@ -59,7 +57,7 @@ export default async function handler(req, res) {
         }
         
         const data = await response.json();
-        // Extrage răspunsul generat de model
+        // Extrage raspunsul generat de model
         const summary = data.choices && data.choices[0]?.message?.content
             ? data.choices[0].message.content.trim()
             : '';

@@ -226,7 +226,7 @@ body.reading-guide {
 }
 .summary-btn {
     display: block;
-    margin: 16px auto 0 auto; /* centrează pe orizontală */
+    margin: 16px auto 0 auto; 
     padding: 8px 12px;
     background-color: #2050b3;
     border: 1px solid #ddd;

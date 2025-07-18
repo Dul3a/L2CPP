@@ -3,46 +3,40 @@ document.addEventListener("DOMContentLoaded", function() {
     const submenuBtns = document.querySelectorAll('.submenu-btn');
     const sidebar = document.querySelector('.sidebar');
 
-    // Detectează limba paginii bazată pe URL
     const isEnglishPage = window.location.pathname.includes('/pages/') || 
                           window.location.pathname.includes('eng.html');
     
-    // Creează butonul pentru a deschide/închide submeniul
     const toggleSidebarBtn = document.createElement('button');
-    toggleSidebarBtn.textContent = isEnglishPage ? 'Menu' : 'Meniu'; // Text în funcție de limbă
+    toggleSidebarBtn.textContent = isEnglishPage ? 'Menu' : 'Meniu'; // text in functie de limba
     toggleSidebarBtn.classList.add('toggle-sidebar-btn');
     
-    // Adaugă butonul direct în body pentru poziționare mai bună
     document.body.appendChild(toggleSidebarBtn);
     
-    // Funcție pentru actualizarea poziției butonului în mod responsive
     function updateButtonPosition() {
         const navbarHeight = document.querySelector('.navbar').offsetHeight;
         
-        // Stilizează butonul pentru a fi poziționat mai bine pe mobil
+        // ajustam butonul pentru a fi pozitionat mai bine pe mobil
         toggleSidebarBtn.style.position = 'fixed';
-        toggleSidebarBtn.style.top = (navbarHeight + 0.5) + 'rem';  // Puțin mai jos de navbar
-        toggleSidebarBtn.style.left = '50%';  // Centrat orizontal
-        toggleSidebarBtn.style.transform = 'translateX(-50%)';  // Ajustare pentru centrare perfectă
-        toggleSidebarBtn.style.zIndex = '999'; // Asigură că este deasupra altor elemente
-        toggleSidebarBtn.style.padding = '0.5rem 1rem'; // Dimensiuni responsive
-        toggleSidebarBtn.style.fontSize = '0.9rem'; // Dimensiune text responsivă
-        toggleSidebarBtn.style.borderRadius = '0.25rem'; // Colțuri rotunjite responsive
-        toggleSidebarBtn.style.opacity = '0.9'; // Ușor transparent
-        toggleSidebarBtn.style.boxShadow = '0 0.125rem 0.3rem rgba(0,0,0,0.2)'; // Efect de umbră
-        toggleSidebarBtn.style.cursor = 'pointer'; // Cursor pointer pentru mai bună utilizabilitate
-        toggleSidebarBtn.style.background = '#070F2A'; // Culoare de fundal care se potrivește cu tema
-        toggleSidebarBtn.style.color = 'white'; // Text alb pentru contrast
-        toggleSidebarBtn.style.border = 'none'; // Elimină bordura implicită
+        toggleSidebarBtn.style.top = (navbarHeight + 0.5) + 'rem';  
+        toggleSidebarBtn.style.left = '50%'; 
+        toggleSidebarBtn.style.transform = 'translateX(-50%)';  
+        toggleSidebarBtn.style.zIndex = '999'; // ca sa fie deasupra mereu
+        toggleSidebarBtn.style.padding = '0.5rem 1rem'; 
+        toggleSidebarBtn.style.fontSize = '0.9rem'; 
+        toggleSidebarBtn.style.borderRadius = '0.25rem'; 
+        toggleSidebarBtn.style.opacity = '0.9'; 
+        toggleSidebarBtn.style.boxShadow = '0 0.125rem 0.3rem rgba(0,0,0,0.2)'; 
+        toggleSidebarBtn.style.cursor = 'pointer'; 
+        toggleSidebarBtn.style.background = '#070F2A'; 
+        toggleSidebarBtn.style.color = 'white'; 
+        toggleSidebarBtn.style.border = 'none'; 
     }
     
-    // Apelează funcția la încărcare
     updateButtonPosition();
     
-    // Recalculează poziția la redimensionarea ferestrei
     window.addEventListener('resize', updateButtonPosition);
     
-    // Verifică dimensiunea ecranului
+    // verificam dimensiunea ecranului
     function checkScreenSize() {
         if (window.innerWidth > 768) {
             sidebar.classList.add('show');
@@ -50,15 +44,12 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             sidebar.classList.remove('show');
             toggleSidebarBtn.style.display = 'block';
-            // Actualizează poziția butonului când devine vizibil
             updateButtonPosition();
         }
     }
     
-    // Rulează verificarea la încărcarea paginii
     checkScreenSize();
     
-    // Toggle pentru submeniu când se apasă butonul
     toggleSidebarBtn.addEventListener('click', function() {
         sidebar.classList.toggle('show');
     });

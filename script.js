@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     changeNavBehaviour();
 
-    // Adaugă funcționalitatea meniului burger
+    // functionalitatea meniului burger
     const burgerMenu = document.querySelector('.burger-menu');
     const navbarList = document.querySelector('.navbar ul');
     
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navbarList.classList.toggle('open');
         });
         
-        // Închide meniul la click pe un link
+        // inchide meniul la click pe un link
         const navLinks = document.querySelectorAll('.navbar a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     
-    // Închide meniul la redimensionarea ferestrei
+    // inchide meniul la redimensionarea ferestrei
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             burgerMenu.classList.remove('active');
@@ -58,7 +58,7 @@ function changeNavBehaviour(){
     var prevScrollpos = window.scrollY;
     var videoElement = document.querySelector("video");
     var nav = document.querySelector("nav ul");
-    var videoPosition = videoElement.offsetHeight; // Get the position of the video element
+    var videoPosition = videoElement.offsetHeight; 
 
     window.onscroll = function() {
         var currentScrollPos = window.scrollY;
