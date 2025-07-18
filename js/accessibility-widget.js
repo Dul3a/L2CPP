@@ -371,3 +371,169 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 }); 
+
+// === CHATBOT MODAL ===
+function createChatbotModal() {
+    // Dacă există deja, nu mai adăuga
+    if (document.getElementById('chatbot-modal-overlay')) return;
+    
+    const overlay = document.createElement('div');
+    overlay.id = 'chatbot-modal-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.background = 'rgba(32, 80, 179, 0.75)'; // albastru semitransparent
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '3000';
+
+    const modal = document.createElement('div');
+    modal.id = 'chatbot-modal';
+    modal.style.background = '#fff';
+    modal.style.borderRadius = '18px';
+    modal.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)';
+    modal.style.maxWidth = '700px';
+    modal.style.width = '90vw';
+    modal.style.maxHeight = '80vh';
+    modal.style.height = '80vh';
+    modal.style.display = 'flex';
+    modal.style.flexDirection = 'column';
+    modal.style.position = 'relative';
+    modal.style.overflow = 'hidden';
+
+    // Buton închidere
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '16px';
+    closeBtn.style.right = '24px';
+    closeBtn.style.background = 'transparent';
+    closeBtn.style.border = 'none';
+    closeBtn.style.fontSize = '2em';
+    closeBtn.style.color = '#2050b3';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.transition = 'color 0.2s';
+    closeBtn.addEventListener('mouseenter',()=>closeBtn.style.color='#f44336');
+    closeBtn.addEventListener('mouseleave',()=>closeBtn.style.color='#2050b3');
+    closeBtn.onclick = function() {
+        overlay.remove();
+    };
+    modal.appendChild(closeBtn);
+
+    // Header
+    const header = document.createElement('div');
+    header.style.padding = '24px 0 12px 0';
+    header.style.textAlign = 'center';
+    header.style.fontWeight = 'bold';
+    header.style.fontSize = '1.5em';
+    header.style.color = '#2050b3';
+    header.innerText = 'Chatbot';
+    modal.appendChild(header);
+
+    // Zona mesaje
+    const messages = document.createElement('div');
+    messages.id = 'chatbot-messages';
+    messages.style.flex = '1';
+    messages.style.overflowY = 'auto';
+    messages.style.padding = '0 24px 12px 24px';
+    messages.style.background = '#f8f9fa';
+    messages.style.borderRadius = '8px';
+    messages.style.marginBottom = '12px';
+    modal.appendChild(messages);
+
+    // Zona input
+    const inputArea = document.createElement('div');
+    inputArea.style.display = 'flex';
+    inputArea.style.padding = '16px 24px 24px 24px';
+    inputArea.style.background = '#fff';
+    inputArea.style.borderTop = '1px solid #e0e0e0';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'chatbot-input';
+    input.placeholder = 'Scrie un mesaj...';
+    input.style.flex = '1';
+    input.style.padding = '10px 14px';
+    input.style.fontSize = '1em';
+    input.style.border = '1px solid #2050b3';
+    input.style.borderRadius = '6px';
+    input.style.marginRight = '12px';
+    input.style.outline = 'none';
+
+    const sendBtn = document.createElement('button');
+    sendBtn.innerText = 'Trimite';
+    sendBtn.style.background = '#2050b3';
+    sendBtn.style.color = '#fff';
+    sendBtn.style.border = 'none';
+    sendBtn.style.borderRadius = '6px';
+    sendBtn.style.padding = '10px 18px';
+    sendBtn.style.fontWeight = 'bold';
+    sendBtn.style.fontSize = '1em';
+    sendBtn.style.cursor = 'pointer';
+    sendBtn.style.transition = 'background 0.2s';
+    sendBtn.addEventListener('mouseenter',()=>sendBtn.style.background='#357ae8');
+    sendBtn.addEventListener('mouseleave',()=>sendBtn.style.background='#2050b3');
+
+    inputArea.appendChild(input);
+    inputArea.appendChild(sendBtn);
+    modal.appendChild(inputArea);
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Focus pe input la deschidere
+    setTimeout(()=>input.focus(), 100);
+
+    // Închidere la click pe overlay (dar nu pe modal)
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) overlay.remove();
+    });
+
+    // Trimitere mesaj la Enter sau click
+    function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+        addMessage('user', text);
+        input.value = '';
+        // TODO: Aici se va integra request-ul către backend pentru răspunsul AI
+        addMessage('bot', '...'); // Placeholder răspuns
+    }
+    sendBtn.onclick = sendMessage;
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    // Funcție pentru a adăuga mesaje în chat
+    function addMessage(role, text) {
+        const msg = document.createElement('div');
+        msg.className = 'chatbot-msg chatbot-msg-' + role;
+        msg.innerText = text;
+        msg.style.margin = '10px 0';
+        msg.style.padding = '10px 16px';
+        msg.style.borderRadius = '8px';
+        msg.style.maxWidth = '80%';
+        msg.style.wordBreak = 'break-word';
+        if (role === 'user') {
+            msg.style.background = '#2050b3';
+            msg.style.color = '#fff';
+            msg.style.alignSelf = 'flex-end';
+            msg.style.marginLeft = '20%';
+        } else {
+            msg.style.background = '#e9f0ff';
+            msg.style.color = '#222';
+            msg.style.alignSelf = 'flex-start';
+            msg.style.marginRight = '20%';
+        }
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+}
+
+// Deschide chatbot la click pe buton
+const chatbotBtn = document.getElementById('startChatBtn');
+if (chatbotBtn) {
+    chatbotBtn.addEventListener('click', createChatbotModal);
+} 
