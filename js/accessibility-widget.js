@@ -372,9 +372,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 
-// === CHATBOT MODAL ===
+// === CHATBOT ===
 function createChatbotModal() {
-    // Dacă există deja, nu mai adăuga
     if (document.getElementById('chatbot-modal-overlay')) return;
     
     const overlay = document.createElement('div');
@@ -404,7 +403,7 @@ function createChatbotModal() {
     modal.style.position = 'relative';
     modal.style.overflow = 'hidden';
 
-    // Buton închidere
+    // buton inchidere
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '&times;';
     closeBtn.style.position = 'absolute';
@@ -423,7 +422,7 @@ function createChatbotModal() {
     };
     modal.appendChild(closeBtn);
 
-    // Header
+    // header
     const header = document.createElement('div');
     header.style.padding = '24px 0 12px 0';
     header.style.textAlign = 'center';
@@ -433,7 +432,7 @@ function createChatbotModal() {
     header.innerText = 'Chatbot';
     modal.appendChild(header);
 
-    // Zona mesaje
+    // zona mesaje
     const messages = document.createElement('div');
     messages.id = 'chatbot-messages';
     messages.style.flex = '1';
@@ -444,7 +443,7 @@ function createChatbotModal() {
     messages.style.marginBottom = '12px';
     modal.appendChild(messages);
 
-    // Zona input
+    // zona input
     const inputArea = document.createElement('div');
     inputArea.style.display = 'flex';
     inputArea.style.padding = '16px 24px 24px 24px';
@@ -484,24 +483,21 @@ function createChatbotModal() {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
-    // Focus pe input la deschidere
     setTimeout(()=>input.focus(), 100);
 
-    // Închidere la click pe overlay (dar nu pe modal)
     overlay.addEventListener('click', function(e) {
         if (e.target === overlay) overlay.remove();
     });
 
-    // Trimitere mesaj la Enter sau click
+    // trimitere mesaj cu enter/click
     function sendMessage() {
         const text = input.value.trim();
         if (!text) return;
         addMessage('user', text);
         input.value = '';
-        // Adaugă mesaj loading animat
         const loadingId = 'chatbot-loading-' + Date.now();
         addLoadingMessage(loadingId);
-        // Trimitere la backend
+        // trimitere la backend
         fetch('/api/chatbot', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -522,7 +518,6 @@ function createChatbotModal() {
         });
     }
 
-    // Adaugă mesaj loading cu animație
     function addLoadingMessage(id) {
         const msg = document.createElement('div');
         msg.className = 'chatbot-msg chatbot-msg-bot chatbot-loading';
@@ -531,7 +526,7 @@ function createChatbotModal() {
         messages.appendChild(msg);
         messages.scrollTop = messages.scrollHeight;
     }
-    // Înlocuiește mesajul loading cu răspunsul real
+    // inlocuim "..." cu raspunsul real
     function replaceLoadingMessage(id, text) {
         const msg = document.getElementById(id);
         if (msg) {
@@ -540,7 +535,7 @@ function createChatbotModal() {
         }
     }
 
-    // Funcție pentru a adăuga mesaje în chat
+    // pentru a adauga mesaje in chat
     function addMessage(role, text) {
         const msg = document.createElement('div');
         msg.className = 'chatbot-msg chatbot-msg-' + role;
@@ -571,7 +566,6 @@ function createChatbotModal() {
     });
 }
 
-// Deschide chatbot la click pe buton
 const chatbotBtn = document.getElementById('startChatBtn');
 if (chatbotBtn) {
     chatbotBtn.addEventListener('click', createChatbotModal);

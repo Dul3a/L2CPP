@@ -289,7 +289,7 @@ body.reading-guide {
     line-height: 1.4;
 }
 
-/* === Summary Modal Overlay === */
+/* === Summary Overlay === */
 .summary-modal-overlay {
     position: fixed;
     top: 0;
@@ -350,7 +350,7 @@ body.reading-guide {
     color: #f44336;
 }
 
-/* === CHATBOT MODAL === */
+/* === CHATBOT === */
 #chatbot-modal-overlay {
     position: fixed;
     top: 0; left: 0;
