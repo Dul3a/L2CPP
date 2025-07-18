@@ -478,6 +478,7 @@ body.reading-guide {
     height: 90vh;
     min-width: unset;
     border-radius: 10px;
+    margin-bottom: 30px;
   }
   #chatbot-messages {
     padding: 0 6px 8px 6px;
