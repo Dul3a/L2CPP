@@ -446,3 +446,27 @@ body.reading-guide {
     display: flex;
     flex-direction: column;
 }
+
+/* === CHATBOT LOADING ANIMATION === */
+.chatbot-loading .chatbot-dots {
+    display: inline-block;
+}
+.chatbot-loading .chatbot-dots span {
+    opacity: 0.2;
+    animation: chatbot-dots-blink 1.2s infinite;
+    font-size: 1.5em;
+    margin-right: 2px;
+}
+.chatbot-loading .chatbot-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+.chatbot-loading .chatbot-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.chatbot-loading .chatbot-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes chatbot-dots-blink {
+    0%, 80%, 100% { opacity: 0.2; }
+    40% { opacity: 1; }
+}

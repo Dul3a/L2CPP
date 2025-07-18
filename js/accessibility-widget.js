@@ -498,13 +498,47 @@ function createChatbotModal() {
         if (!text) return;
         addMessage('user', text);
         input.value = '';
-        // TODO: Aici se va integra request-ul către backend pentru răspunsul AI
-        addMessage('bot', '...'); // Placeholder răspuns
+        // Adaugă mesaj loading animat
+        const loadingId = 'chatbot-loading-' + Date.now();
+        addLoadingMessage(loadingId);
+        // Trimitere la backend
+        fetch('/api/chatbot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        })
+        .then(async r => {
+            if (!r.ok) {
+                const err = await r.json().catch(() => ({}));
+                throw new Error(err.error || 'Eroare la server');
+            }
+            return r.json();
+        })
+        .then(data => {
+            replaceLoadingMessage(loadingId, data.reply || '(Fără răspuns)');
+        })
+        .catch(err => {
+            replaceLoadingMessage(loadingId, 'Eroare: ' + err.message);
+        });
     }
-    sendBtn.onclick = sendMessage;
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') sendMessage();
-    });
+
+    // Adaugă mesaj loading cu animație
+    function addLoadingMessage(id) {
+        const msg = document.createElement('div');
+        msg.className = 'chatbot-msg chatbot-msg-bot chatbot-loading';
+        msg.id = id;
+        msg.innerHTML = '<span class="chatbot-dots"><span>.</span><span>.</span><span>.</span></span>';
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+    // Înlocuiește mesajul loading cu răspunsul real
+    function replaceLoadingMessage(id, text) {
+        const msg = document.getElementById(id);
+        if (msg) {
+            msg.classList.remove('chatbot-loading');
+            msg.innerText = text;
+        }
+    }
 
     // Funcție pentru a adăuga mesaje în chat
     function addMessage(role, text) {
