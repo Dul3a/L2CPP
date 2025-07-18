@@ -374,20 +374,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // === CHATBOT ===
 function createChatbotModal() {
-    if (document.getElementById('chatbot-modal-overlay')) return;
+    const overlay = document.getElementById('chatbot-modal-overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        const input = overlay.querySelector('#chatbot-input');
+        if (input) setTimeout(()=>input.focus(), 100);
+        return;
+    }
     
-    const overlay = document.createElement('div');
-    overlay.id = 'chatbot-modal-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.background = 'rgba(32, 80, 179, 0.75)'; // albastru semitransparent
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.zIndex = '3000';
+    const newOverlay = document.createElement('div');
+    newOverlay.id = 'chatbot-modal-overlay';
+    newOverlay.style.position = 'fixed';
+    newOverlay.style.top = '0';
+    newOverlay.style.left = '0';
+    newOverlay.style.width = '100vw';
+    newOverlay.style.height = '100vh';
+    newOverlay.style.background = 'rgba(32, 80, 179, 0.75)'; // albastru semitransparent
+    newOverlay.style.display = 'flex';
+    newOverlay.style.alignItems = 'center';
+    newOverlay.style.justifyContent = 'center';
+    newOverlay.style.zIndex = '3000';
 
     const modal = document.createElement('div');
     modal.id = 'chatbot-modal';
@@ -418,7 +424,7 @@ function createChatbotModal() {
     closeBtn.addEventListener('mouseenter',()=>closeBtn.style.color='#f44336');
     closeBtn.addEventListener('mouseleave',()=>closeBtn.style.color='#2050b3');
     closeBtn.onclick = function() {
-        overlay.remove();
+        newOverlay.style.display = 'none';
     };
     modal.appendChild(closeBtn);
 
@@ -450,10 +456,14 @@ function createChatbotModal() {
     inputArea.style.background = '#fff';
     inputArea.style.borderTop = '1px solid #e0e0e0';
 
+    let isRomanian = /[ăâîșțĂÂÎȘȚ]/.test(document.body.innerText);
+    let btnText = isRomanian ? 'Trimite' : 'Send';
+    let placeholderText = isRomanian ? 'Scrie un mesaj...' : 'Type a message...';
+
     const input = document.createElement('input');
     input.type = 'text';
     input.id = 'chatbot-input';
-    input.placeholder = 'Scrie un mesaj...';
+    input.placeholder = placeholderText;
     input.style.flex = '1';
     input.style.padding = '10px 14px';
     input.style.fontSize = '1em';
@@ -463,7 +473,7 @@ function createChatbotModal() {
     input.style.outline = 'none';
 
     const sendBtn = document.createElement('button');
-    sendBtn.innerText = 'Trimite';
+    sendBtn.innerText = btnText;
     sendBtn.style.background = '#2050b3';
     sendBtn.style.color = '#fff';
     sendBtn.style.border = 'none';
@@ -480,13 +490,13 @@ function createChatbotModal() {
     inputArea.appendChild(sendBtn);
     modal.appendChild(inputArea);
 
-    overlay.appendChild(modal);
-    document.body.appendChild(overlay);
+    newOverlay.appendChild(modal);
+    document.body.appendChild(newOverlay);
 
     setTimeout(()=>input.focus(), 100);
 
-    overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) overlay.remove();
+    newOverlay.addEventListener('click', function(e) {
+        if (e.target === newOverlay) newOverlay.style.display = 'none';
     });
 
     // trimitere mesaj cu enter/click
