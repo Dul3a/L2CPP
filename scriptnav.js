@@ -3,11 +3,9 @@ var scrollStartPoint = 100;
 document.addEventListener("DOMContentLoaded", function () {
     changeNavBehaviour();
     
-    // Important: Asigură-te că nu interacționează cu comportamentul butonului burger
-    // Adaugă această verificare
+    // verificam ca nu interactioneaza cu butonul burger
     const burgerMenu = document.querySelector('.burger-menu');
     if (burgerMenu) {
-        // Păstrează eventListener-ul existent
         const existingListeners = burgerMenu.getAttribute('data-has-listeners');
         if (!existingListeners) {
             burgerMenu.setAttribute('data-has-listeners', 'true');

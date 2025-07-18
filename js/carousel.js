@@ -1,3 +1,4 @@
+// pentru caruselul din landing page
 document.addEventListener('DOMContentLoaded', function() {
     const items = document.querySelectorAll('.carousel-item');
     let currentItem = 0;

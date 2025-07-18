@@ -1,6 +1,4 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Apply saved font settings immediately
     if (localStorage.getItem('readable-font') === 'enabled') {
         document.body.style.fontFamily = 'Comic Sans MS, Comic Sans, cursive';
         document.body.style.letterSpacing = '0.12em';
@@ -8,25 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.lineHeight = '1.5';
     }
 
-    // Get elements
     const accessibilityBtn = document.getElementById('accessibilityBtn');
     const accessibilityMenu = document.getElementById('accessibilityMenu');
     const readingGuideLine = document.getElementById('reading-guide-line');
     
-    // Save currently active buttons for each category
     let activeButtons = {
         contrast: document.getElementById('defaultContrastBtn'),
         textSize: document.getElementById('defaultTextBtn'),
         spacing: document.getElementById('defaultSpacingBtn')
     };
     
-    // Toggle menu function
     function toggleMenu() {
         accessibilityMenu.classList.toggle('active');
         
-        // When menu is opened, update button states to match current settings
         if (accessibilityMenu.classList.contains('active')) {
-            // Update contrast button
             if (document.body.classList.contains('high-contrast')) {
                 document.getElementById('defaultContrastBtn').classList.remove('active');
                 document.getElementById('highContrastBtn').classList.add('active');
@@ -44,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 activeButtons.contrast = document.getElementById('defaultContrastBtn');
             }
             
-            // Update text size button
+            // text size button
             if (document.body.classList.contains('large-text')) {
                 document.getElementById('defaultTextBtn').classList.remove('active');
                 document.getElementById('largeTextBtn').classList.add('active');
@@ -62,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 activeButtons.textSize = document.getElementById('defaultTextBtn');
             }
             
-            // Update spacing button
+            // spacing button
             if (document.body.classList.contains('increased-spacing')) {
                 document.getElementById('defaultSpacingBtn').classList.remove('active');
                 document.getElementById('increasedSpacingBtn').classList.add('active');
@@ -76,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 activeButtons.spacing = document.getElementById('defaultSpacingBtn');
             }
             
-            // Update toggle buttons
+            // toggle buttons
             if (document.body.classList.contains('highlight-links')) {
                 document.getElementById('highlightLinksBtn').classList.add('active');
             }
@@ -92,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Toggle active button function
     function toggleActiveButton(category, newActiveButton) {
         if (activeButtons[category]) {
             activeButtons[category].classList.remove('active');
@@ -101,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         activeButtons[category] = newActiveButton;
     }
     
-    // Toggle class function for toggle buttons
     function toggleClass(element, className) {
         if (element.classList.contains('active')) {
             element.classList.remove('active');
@@ -116,10 +107,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Toggle accessibility menu
+    // accessibility menu
     accessibilityBtn.addEventListener('click', toggleMenu);
     
-    // Color Contrast buttons
+    // color contrast buttons
     document.getElementById('defaultContrastBtn').addEventListener('click', function() {
         document.body.classList.remove('high-contrast', 'yellow-black', 'black-yellow');
         toggleActiveButton('contrast', this);
@@ -147,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('contrast', 'black-yellow');
     });
     
-    // Text Size buttons
+    // text size buttons
     document.getElementById('defaultTextBtn').addEventListener('click', function() {
         document.body.classList.remove('large-text', 'larger-text', 'largest-text');
         toggleActiveButton('textSize', this);
@@ -175,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('textSize', 'largest-text');
     });
     
-    // Text Spacing buttons
+    // text spacing buttons
     document.getElementById('defaultSpacingBtn').addEventListener('click', function() {
         document.body.classList.remove('increased-spacing', 'wider-spacing');
         toggleActiveButton('spacing', this);
@@ -196,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('spacing', 'wider-spacing');
     });
     
-    // Reading Aids buttons (toggle buttons)
+    // reading aids buttons (toggle buttons)
     document.getElementById('highlightLinksBtn').addEventListener('click', function() {
         toggleClass(this, 'highlight-links');
     });
@@ -205,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleClass(this, 'highlight-titles');
     });
     
-    // Readable Font button
+    // font prietenos pentru cei cu dislexie
     document.getElementById('readableFontBtn').addEventListener('click', function() {
         toggleClass(this, 'readable-font');
         if (document.body.classList.contains('readable-font')) {
@@ -244,41 +235,38 @@ document.addEventListener('DOMContentLoaded', function() {
         readingGuideLine.style.top = (e.clientY - 15) + 'px';
     }
     
-    // Reset all settings
+    // butonul de resetare a tuturor setarilor
     document.getElementById('resetBtn').addEventListener('click', function() {
-        // Remove all body classes
         document.body.className = '';
         
-        // Reset all buttons
         const allButtons = document.querySelectorAll('.option-btn');
         allButtons.forEach(button => {
             button.classList.remove('active');
         });
         
-        // Set default buttons as active
         document.getElementById('defaultContrastBtn').classList.add('active');
         document.getElementById('defaultTextBtn').classList.add('active');
         document.getElementById('defaultSpacingBtn').classList.add('active');
         
-        // Reset reading guide
+        // reset reading guide
         readingGuideLine.style.display = 'none';
         document.removeEventListener('mousemove', moveReadingGuide);
         readingGuideActive = false;
         
-        // Reset activeButtons object
+        // reset activeButtons object
         activeButtons = {
             contrast: document.getElementById('defaultContrastBtn'),
             textSize: document.getElementById('defaultTextBtn'),
             spacing: document.getElementById('defaultSpacingBtn')
         };
         
-        // Reset font styles
+        // reset la font styles
         document.body.style.fontFamily = '';
         document.body.style.letterSpacing = '';
         document.body.style.wordSpacing = '';
         document.body.style.lineHeight = '';
         
-        // Clear localStorage
+        // clear localStorage
         localStorage.removeItem('contrast');
         localStorage.removeItem('textSize');
         localStorage.removeItem('spacing');
@@ -288,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.removeItem('readingGuide');
     });
     
-    // Close menu when clicking outside
+    // sa se inchida meniul atunci cand apas in afara
     document.addEventListener('click', function(event) {
         if (!accessibilityMenu.contains(event.target) && 
             event.target !== accessibilityBtn &&
@@ -297,9 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Load saved settings
+    // sa se incarce setarile salvate
     function loadSavedSettings() {
-        // Load contrast setting
         const savedContrast = localStorage.getItem('contrast');
         if (savedContrast) {
             document.body.classList.add(savedContrast);
@@ -312,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Load text size setting
         const savedTextSize = localStorage.getItem('textSize');
         if (savedTextSize) {
             document.body.classList.add(savedTextSize);
@@ -324,7 +310,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Load spacing setting
         const savedSpacing = localStorage.getItem('spacing');
         if (savedSpacing) {
             document.body.classList.add(savedSpacing);
@@ -336,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Load toggle settings
         const toggleSettings = ['highlight-links', 'highlight-titles', 'readable-font'];
         toggleSettings.forEach(setting => {
             if (localStorage.getItem(setting) === 'enabled') {
@@ -344,7 +328,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const btn = document.getElementById(setting.replace('-', '') + 'Btn');
                 if (btn) {
                     btn.classList.add('active');
-                    // Apply readable font settings if enabled
                     if (setting === 'readable-font') {
                         document.body.style.fontFamily = 'Comic Sans MS, Comic Sans, cursive';
                         document.body.style.letterSpacing = '0.12em';
@@ -355,7 +338,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Load reading guide
         if (localStorage.getItem('readingGuide') === 'enabled') {
             readingGuideActive = true;
             readingGuideLine.style.display = 'block';
@@ -364,11 +346,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Load saved settings on page load
     loadSavedSettings();
 }); 
 
-// Tab switching logic for accessibility widget
 document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -381,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('content-' + tabName).classList.add('active');
     }
 
-    // Set default tab
+    // default tab
     showTab('options');
 
     tabButtons.forEach(btn => {
