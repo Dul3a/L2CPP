@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             prompt = `Rezumă următorul text în limba română, într-un stil clar și concis. Doresc doar conținutul rezumatului,
             care să fie unul cât se poate de scurt, dar care să conțină elementele cheie ale textului primit:\n"""\n${text}\n"""`;
         } else {
-            prompt = `Summarize the following text in Romanian, in a clear and concise style. I only want the content of the summary,
+            prompt = `Summarize the following text in English, in a clear and concise style. I only want the content of the summary,
             which should be as short as possible, but which should contain the key elements of the text received:\n"""\n${text}\n"""`;
         }
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
