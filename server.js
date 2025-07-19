@@ -41,14 +41,15 @@ app.post('/api/chatbot', async (req, res) => {
 // Sumarizator route
 app.post('/api/summarize', async (req, res) => {
     // Aceasta functie este pentru a detecta limba, ca sa stim ce prompt dam AI-ului
-    function detectLang(text) {
+    function detectLang(text, pagePath) {
+        if (pagePath && /eng\.html$/i.test(pagePath)) return 'en';
         if (/[ăâîșțĂÂÎȘȚ]/.test(text)) return 'ro';
         return 'en';
     }
 
     try {
-        const { text } = req.body;
-        const lang = detectLang(text);
+        const { text, pagePath } = req.body;
+        const lang = detectLang(text, pagePath);
         let prompt;
         if (lang === 'ro') {
             prompt = `Rezumă următorul text în limba română, într-un stil clar și concis. Doresc doar conținutul rezumatului,
