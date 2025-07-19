@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/ai-quiz.css">
     <link rel="stylesheet" href="../css/questions.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 
@@ -40,143 +41,23 @@
         <li><a href="../pages/testeng.html"> EN </a></li>
       </ul>
     </nav>
-    <br><br><br>
-    <div class="exam-questions">
-      <ul class="questions">
-        
-          <li> 
-            <div id="question0" class="question"> 1. Completează codul pentru a crea un program C++ care afișează "Salut, lume!". </div>
-            <pre>
-              int main() {
-                <input type="text" id="answer0" class="answer"> << "Salut, lume!" << endl;
-                return 0;
-              }
-            </pre>
-          </li>
-
-          <li> 
-            <div id="question1" class="question"> 2. Ce tip de date trebuie adaugat in secventa de mai jos pentru a declara o variabila ce reprezinta un numar intreg?</div>
-            <pre>
-                int main()
-                {
-                  <input type="text" id="answer1" class="answer"> numar_real = 3;
-                  cout << numar_intreg;
-                }
-            </pre>
-          </li>
-          <li> 
-            <div id="question2" class="question" class="answer"> 3. Inlocuieste in secventa de mai jos cu valorile potrivite. </div>
-            <pre>
-              int main()
-              {
-                <input type="text" id="answer2_1" class="answer"> fin("NUME_FISIER_INTRARE");
-                fin >> x;
-                fin.<input type="text" id="answer2_2" class="answer">; //pentru a inchide fisierul
-              }
-            </pre>
-          </li> 
-          <li> 
-            <div id="question3" class="question" class="answer"> 4. Completează codul pentru a calcula restul impartirii a două numere intregi x și y.</div>
-            <pre>
-              int main()
-              {
-                int x = 17;
-                int y = 5;
-                int rest = x <input type="text" id="answer3" class="answer"> y;
-
-                cout << "Restul impartirii lui " << x << " la " << y << " este: " << rest << endl;
-
-                return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question4" class="question"> 5. Completeaza codul pentru a verifica daca un numar z este mai mic decat 10</div>
-            <pre>
-              int main() {
-                int z = 15;
-            
-                if (z <input type="text" id="answer4" class="answer"> 10) {
-                    cout << "Numarul " << z << " este mai mic decat 10" << endl;
-                } else {
-                    cout << "Numarul " << z << " nu este mai mic decat 10" << endl;
-                }
-            
-                return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question5" class="question"> 6. Completeaza codul pentru a calcula suma primelor 10 numere naturale utilizand o bucla for.</div>
-            <pre>
-                int main() {
-                    int suma = 0;
-                    for (int i = <input type="text" id="answer5_1" class="answer">; i <= <input type="text" id="answer5_2" class="answer">; i++) {
-                        suma += i;
-                    }
-                    cout << "Suma primelor 10 numere naturale este: " << suma << endl;
-                    return 0;
-                }
-            </pre>
-          </li>
-          <li> 
-            <div id="question6" class="question"> 7. Completeaza codul pentru a inițializa un vector cu 5 elemente, a calcula suma elementelor vectorului și a afisa rezultatul.</div>
-            <pre>
-              int main() {
-                  int vec[5] = {1, 2, 3, 4, 5}; 
-                  int suma = 0;
-              
-                  for (int i = 0; i <input type="text" id="answer6_1" class="answer">; i++) {
-                      suma <input type="text" id="answer6_2" class="answer"> vec[i];
-                  }
-              
-                  cout << "Suma elementelor vectorului este: " << suma << endl;
-              
-                  return 0;
-              }
-          </pre>
-          </li>
-          <li>  
-            <div id="question7" class="question"> 8. Ce rezultat va afisa urmatorul cod C++? <input type="text" id="answer7" class="answer"> </div>
-            <pre>
-              int recursiveSum(int n) {
-                  if (n <= 0) return 0;
-                  return n + recursiveSum(n - 1);
-              }
-              
-              int main() {
-                  int result = recursiveSum(5);
-                  cout << result;
-                  return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question8" class="question"> 9. Ce rezultat va afisa urmatorul cod C++? <input type="text" id="answer8" class="answer"> </div>
-            <pre>
-              void processString(char text[]) {
-                for (int i = 0; text[i] != '\0'; i++) {
-                    if (text[i] >= 'a' && text[i] <= 'z') {
-                        text[i] = text[i] - 'a' + 'A';
-                    }
-                }
-            }
-            
-            int main() {
-                char text[] = "Hello, World!";
-                processString(text);
-                cout << text;
-                return 0;
-            }
-            </pre>
-          </li> 
-        </ul>
-        <br>
-        <a> <button class="button-18 submit-button" role="button" onclick="checkAnswers()">Afiseaza Rezultatele</button></a>
-    </div>
-    <div class="content">
+    <br><br>
+    
+    <div class="quiz-container" id="quizContainer">
+      <div class="quiz-center">
+        <div class="quiz-title">Generează-ți propriul test AI la C++</div>
+        <div class="quiz-subtitle">Scrie subiectul dorit mai jos și apasă „Generează test”.</div>
+      </div>
+      <!-- intrebarile generate o sa apara aici -->
     </div>
   
+    <div class="quiz-input-bar">
+      <form id="quizPromptForm" autocomplete="off">
+        <input type="text" id="quizPromptInput" placeholder="Ex: pointeri, STL, recursivitate..." required>
+        <button type="submit">Generează test</button>
+      </form>
+    </div>
+
     <!-- Accessibility Button -->
     <button id="accessibilityBtn" aria-label="Accessibility Options">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -254,6 +135,7 @@
   <!-- Reading Guide Line -->
   <div id="reading-guide-line"></div>
 
+    <script src="../js/ai-quiz.js"></script>
     <script src="../scriptnav.js"></script>
     <script src="../js/tests.js"></script>
     <script src="../burger-menu.js"></script>
