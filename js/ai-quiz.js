@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const lang = document.documentElement.lang || (window.location.pathname.includes('eng') ? 'en' : 'ro');
 
     quizContainer.innerHTML = lang === 'en'
-      ? '<p style="text-align:center;">Generating quiz...</p>'
-      : '<p style="text-align:center;">Se generează testul...</p>';
+      ? '<div style="display:flex;align-items:center;justify-content:center;min-height:300px;height:60vh;width:100%;font-size:2rem;text-align:center;">Generating quiz...</div>'
+      : '<div style="display:flex;align-items:center;justify-content:center;min-height:300px;height:60vh;width:100%;font-size:2rem;text-align:center;">Se generează testul...</div>';
 
     const response = await fetch('/api/quiz', {
       method: 'POST',
@@ -47,20 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // afiseaza intrebarile
-    renderQuiz(questions);
+    renderQuiz(questions, lang);
   });
 
   let lastQuizQuestions = []; 
 
-  function renderQuiz(questions) {
+  function renderQuiz(questions, lang) {
     if (!Array.isArray(questions) || questions.length === 0) {
-      quizContainer.innerHTML = '<p style="color:red;text-align:center;">Nu s-au generat întrebări. Încearcă alt subiect!</p>';
+      quizContainer.innerHTML = lang === 'en'
+        ? '<p style="color:red;text-align:center;">No questions generated. Try another topic!</p>'
+        : '<p style="color:red;text-align:center;">Nu s-au generat întrebări. Încearcă alt subiect!</p>';
       return;
     }
 
     lastQuizQuestions = questions; 
 
-    quizContainer.innerHTML = '<h2 style="text-align:center;">Test AI generat</h2>';
+    quizContainer.innerHTML = lang === 'en'
+      ? '<h2 style="text-align:center;">AI Generated Quiz</h2>'
+      : '<h2 style="text-align:center;">Test AI generat</h2>';
     const form = document.createElement('form');
     form.id = 'quizQuestionsForm';
 
