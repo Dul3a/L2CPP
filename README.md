@@ -1,5 +1,5 @@
 # L2C++ </>
-
+![image alt](https://github.com/Dul3a/L2CPP/blob/bb896305e83a3a7b4cef6871a20a12d7af095ddf/Images%20%26%20Videos/L2C%2B%2B%20LOGO%20500x500.png)
 L2C++ is a minimalist and efficient learning platform designed to help beginners understand and practice C++ programming.
 
 Key Features:
