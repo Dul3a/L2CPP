@@ -10,11 +10,16 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { message } = req.body;
+        const { message, lang: langFromClient } = req.body;
         if (!message || typeof message !== 'string') {
             return res.status(400).json({ error: 'Subiect invalid' });
         }
-        const lang = detectLang(message);
+        let lang;
+        if (langFromClient) {
+            lang = langFromClient;
+        } else {
+            lang = detectLang(message);
+        }
         let prompt;
         if (lang === 'ro') {
             prompt = `Generează un test de maximum 10 întrebări despre următorul subiect, doar dacă acesta are legătură cu limbajul de programare C++. Dacă nu are legătură, genereaza un mesaj în care spui că nu poți genera altceva în afara de ceva legat de C++. Subiectul este: ${message}. Dacă inputul primit este valid, pentru fiecare întrebare, oferă doar 3 variante de răspuns (A, B, C) și marchează răspunsul corect. Returnează structurat ca JSON, de forma: [ { "question": "...", "options": ["A ...", "B ...", "C ..."], "correct": "A" }, ... ]. Nu adăuga explicații suplimentare, doar JSON-ul.`;
