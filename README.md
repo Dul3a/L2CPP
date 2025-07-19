@@ -14,7 +14,7 @@ Key Features:
 
 - 🤖 AI chatbot assistant – Ask programming questions or get live help with debugging, syntax, and concepts.
 
-# How to access the website
+# How to run the website
 
 If you want you can access the website online right now at https://l2cpp.vercel.app/
 
@@ -27,13 +27,13 @@ git clone https://github.com/Dul3a/L2CPP.git
 ```bash
 cd L2CPP
 ```
-- If you want to dive directly into action, you can access the index.html file, but the Summarizer and Chatbot won't work. For that,
+- If you want to dive directly into action, you can access the `index.html` file, but the Summarizer and Chatbot won't work. For that,
 you'll need to create an `.env` file and write the following inside the file:
 ```bash
 OPENAI_API_KEY=YOUR_API_KEY
 PORT=3000
 ```
-- Now you need to install the required dependencies. You'll need to have Node.js installed on your PC to use the following commands.
+- Now you need to install the required dependencies. You'll need to have `Node.js` installed on your PC to use the following commands.
 You can check if you have it already installed opening the terminal and writing these commands:
 ```batch
 nove -v
