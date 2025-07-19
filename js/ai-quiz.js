@@ -9,13 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const topic = quizInput.value.trim();
     if (!topic) return;
 
-    quizContainer.innerHTML = '<p style="text-align:center;">Se generează testul...</p>';
+    const lang = document.documentElement.lang || (window.location.pathname.includes('eng') ? 'en' : 'ro');
+
+    quizContainer.innerHTML = lang === 'en'
+      ? '<p style="text-align:center;">Generating quiz...</p>'
+      : '<p style="text-align:center;">Se generează testul...</p>';
 
     const response = await fetch('/api/quiz', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Generează un test de maximum 10 întrebări despre: ${topic}. Pentru fiecare întrebare, oferă 3 variante de răspuns (A, B, C) și marchează răspunsul corect. Returnează structurat, ușor de parsat ca JSON.`
+        message: topic,
+        lang: lang
       })
     });
 
@@ -123,17 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let resultHtml = `<h2 style="text-align:center;">Rezultat: ${correctCount} / ${total} corecte</h2>`;
-    questions.forEach((q, idx) => {
-      let isCorrect = q.correct && userAnswers[idx].toUpperCase() === q.correct.toUpperCase();
-      resultHtml += `
-        <div class="quiz-question" style="border-left: 6px solid ${isCorrect ? '#4caf50' : '#f44336'};">
-          <b>${idx + 1}. ${q.question}</b><br>
-          <span>Răspunsul tău: <b>${userAnswers[idx] || '-'}</b></span><br>
-          <span>Răspuns corect: <b>${q.correct}</b></span>
-        </div>
-      `;
-    });
-
     quizContainer.innerHTML = resultHtml;
   }
 });

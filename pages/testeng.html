@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/ai-quiz.css">
     <link rel="stylesheet" href="../css/questions.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 
@@ -40,141 +41,20 @@
         <li><a href="../pagini/test.html"> RO </a></li>
       </ul>
     </nav>
-    <br><br><br>
-    <div class="exam-questions">
-      <ul class="questions">
-        
-          <li> 
-            <div id="question0" class="question"> 1. Complete the code to create a C++ program that prints "Hello, world!". </div>
-            <pre>
-              int main() {
-                <input type="text" id="answer0" class="answer"> << "Hello, world!" << endl;
-                return 0;
-              }
-            </pre>
-          </li>
+    <br><br>
 
-          <li> 
-            <div id="question1" class="question"> 2. What data type should be added to the sequence below to declare a variable representing an integer number?</div>
-            <pre>
-                int main()
-                {
-                  <input type="text" id="answer1" class="answer"> integer_number = 3;
-                  cout << integer_number;
-                }
-            </pre>
-          </li>
-          <li> 
-            <div id="question2" class="question" class="answer"> 3. Replace the placeholders below with the appropriate values. </div>
-            <pre>
-              int main()
-              {
-                <input type="text" id="answer2_1" class="answer"> fin("INPUT_FILE_NAME");
-                fin >> x;
-                fin.<input type="text" id="answer2_2" class="answer">; // to close the file
-              }
-            </pre>
-          </li> 
-          <li> 
-            <div id="question3" class="question" class="answer"> 4. Complete the code to calculate the remainder of dividing two integers x and y.</div>
-            <pre>
-              int main()
-              {
-                int x = 17;
-                int y = 5;
-                int remainder = x <input type="text" id="answer3" class="answer"> y;
-
-                cout << "The remainder of dividing " << x << " by " << y << " is: " << remainder << endl;
-
-                return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question4" class="question"> 5. Complete the code to check if a number z is less than 10.</div>
-            <pre>
-              int main() {
-                int z = 15;
-            
-                if (z <input type="text" id="answer4" class="answer"> 10) {
-                    cout << "The number " << z << " is less than 10" << endl;
-                } else {
-                    cout << "The number " << z << " is not less than 10" << endl;
-                }
-            
-                return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question5" class="question"> 6. Complete the code to calculate the sum of the first 10 natural numbers using a for loop.</div>
-            <pre>
-                int main() {
-                    int sum = 0;
-                    for (int i = <input type="text" id="answer5_1" class="answer">; i <= <input type="text" id="answer5_2" class="answer">; i++) {
-                        sum += i;
-                    }
-                    cout << "The sum of the first 10 natural numbers is: " << sum << endl;
-                    return 0;
-                }
-            </pre>
-          </li>
-          <li> 
-            <div id="question6" class="question"> 7. Complete the code to initialize an array with 5 elements, calculate the sum of the array elements, and display the result.</div>
-            <pre>
-              int main() {
-                  int arr[5] = {1, 2, 3, 4, 5}; 
-                  int sum = 0;
-              
-                  for (int i = 0; i <input type="text" id="answer6_1" class="answer">; i++) {
-                      sum <input type="text" id="answer6_2" class="answer"> arr[i];
-                  }
-              
-                  cout << "The sum of the array elements is: " << sum << endl;
-              
-                  return 0;
-              }
-          </pre>
-          </li>
-          <li>  
-            <div id="question7" class="question"> 8. What result will the following C++ code display? <input type="text" id="answer7" class="answer"> </div>
-            <pre>
-              int recursiveSum(int n) {
-                  if (n <= 0) return 0;
-                  return n + recursiveSum(n - 1);
-              }
-              
-              int main() {
-                  int result = recursiveSum(5);
-                  cout << result;
-                  return 0;
-              }
-            </pre>
-          </li>
-          <li>  
-            <div id="question8" class="question"> 9. What result will the following C++ code display? <input type="text" id="answer8" class="answer"> </div>
-            <pre>
-              void processString(char text[]) {
-                for (int i = 0; text[i] != '\0'; i++) {
-                    if (text[i] >= 'a' && text[i] <= 'z') {
-                        text[i] = text[i] - 'a' + 'A';
-                    }
-                }
-            }
-            
-            int main() {
-                char text[] = "Hello, World!";
-                processString(text);
-                cout << text;
-                return 0;
-            }
-            </pre>
-          </li> 
-        </ul>
-        <br>
-        <a> <button class="button-18 submit-button" role="button" onclick="checkAnswers()">Display Results</button></a>
+    <div class="quiz-container" id="quizContainer">
+      <div class="quiz-center">
+        <div class="quiz-title">Generate your own AI C++ quiz</div>
+        <div class="quiz-subtitle">Type your desired topic below and press "Generate quiz".</div>
+      </div>
     </div>
-    <div class="content">
+  
+    <div class="quiz-input-bar">
+      <form id="quizPromptForm" autocomplete="off">
+        <input type="text" id="quizPromptInput" placeholder="Ex: pointers, STL, recursion..." required>
+        <button type="submit">Generate quiz</button>
+      </form>
     </div>
   
     <!-- Accessibility Button -->
@@ -249,11 +129,12 @@
             <button class="summary-btn" id="startChatBtn">Chatbot</button>
         </div>
       </div>
-    </div>
+  </div>
   
-    <!-- Reading Guide Line -->
-    <div id="reading-guide-line"></div>
+  <!-- Reading Guide Line -->
+  <div id="reading-guide-line"></div>
 
+    <script src="../js/ai-quiz.js"></script>
     <script src="../scriptnav.js"></script>
     <script src="../js/tests.js"></script>
     <script src="../burger-menu.js"></script>
