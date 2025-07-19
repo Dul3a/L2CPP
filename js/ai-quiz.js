@@ -128,6 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let resultHtml = `<h2 style="text-align:center;">Rezultat: ${correctCount} / ${total} corecte</h2>`;
+    questions.forEach((q, idx) => {
+      let isCorrect = q.correct && userAnswers[idx].toUpperCase() === q.correct.toUpperCase();
+      resultHtml += `
+        <div class="quiz-question" style="border-left: 6px solid ${isCorrect ? '#4caf50' : '#f44336'};">
+          <b>${idx + 1}. ${q.question}</b><br>
+          <span>Răspunsul tău: <b>${userAnswers[idx] || '-'}</b></span><br>
+          <span>Răspuns corect: <b>${q.correct}</b></span>
+        </div>
+      `;
+    });
     quizContainer.innerHTML = resultHtml;
   }
 });
