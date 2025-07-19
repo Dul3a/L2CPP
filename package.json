@@ -1,0 +1,25 @@
+{
+  "name": "website_infoeducatie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "burger-menu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dul3a/Website_Infoeducatie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dul3a/Website_Infoeducatie/issues"
+  },
+  "homepage": "https://github.com/Dul3a/Website_Infoeducatie#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
