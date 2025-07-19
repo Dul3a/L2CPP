@@ -7,7 +7,7 @@ Key Features:
 
 - 💻 Interactive editor: Write, run, and test C++ code directly in the browser.
 
-- 📘 Structured lessons (if applicable): Introduces fundamental concepts progressively.
+- 📘 Structured lessons: Introduces fundamental concepts progressively.
 
 - ⚡ Fast and lightweight: No signup or installation required — start learning immediately.
 
