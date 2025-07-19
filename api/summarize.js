@@ -1,7 +1,7 @@
 // api/summarize.js
 export default async function handler(req, res) {
     console.log('=== DEBUG START ===');
-    console.log('Hugging Face API Key exists:', !!process.env.MISTRAL_API_KEY);
+    console.log('OPENAI API Key exists:', !!process.env.OPENAI_API_KEY);
     
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Metoda nu este permisă' });
@@ -26,21 +26,21 @@ export default async function handler(req, res) {
         }
         console.log('Text received:', text ? text.substring(0, 50) + '...' : 'NO TEXT');
         
-        if (!process.env.MISTRAL_API_KEY) {
-            console.error('MISTRAL_API_KEY nu este setată');
+        if (!process.env.OPENAI_API_KEY) {
+            console.error('OPENAI_API_KEY nu este setată');
             return res.status(500).json({ error: 'API key nu este configurată' });
         }
         
         console.log('Making request to OpenRouter...');
         
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${process.env.MISTRAL_API_KEY}`,
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'google/gemma-3-4b-it:free',
+                model: 'gpt-4.1-nano-2025-04-14',
                 messages: [
                     {
                         role: 'user',

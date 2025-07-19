@@ -371,3 +371,212 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 }); 
+
+// === CHATBOT ===
+function createChatbotModal() {
+    const overlay = document.getElementById('chatbot-modal-overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        const input = overlay.querySelector('#chatbot-input');
+        if (input) setTimeout(()=>input.focus(), 100);
+        return;
+    }
+    
+    const newOverlay = document.createElement('div');
+    newOverlay.id = 'chatbot-modal-overlay';
+    newOverlay.style.position = 'fixed';
+    newOverlay.style.top = '0';
+    newOverlay.style.left = '0';
+    newOverlay.style.width = '100vw';
+    newOverlay.style.height = '100vh';
+    newOverlay.style.background = 'rgba(32, 80, 179, 0.75)'; // albastru semitransparent
+    newOverlay.style.display = 'flex';
+    newOverlay.style.alignItems = 'center';
+    newOverlay.style.justifyContent = 'center';
+    newOverlay.style.zIndex = '3000';
+
+    const modal = document.createElement('div');
+    modal.id = 'chatbot-modal';
+    modal.style.background = '#fff';
+    modal.style.borderRadius = '18px';
+    modal.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)';
+    modal.style.maxWidth = '700px';
+    modal.style.width = '90vw';
+    modal.style.maxHeight = '80vh';
+    modal.style.height = '80vh';
+    modal.style.display = 'flex';
+    modal.style.flexDirection = 'column';
+    modal.style.position = 'relative';
+    modal.style.overflow = 'hidden';
+
+    // buton inchidere
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '16px';
+    closeBtn.style.right = '24px';
+    closeBtn.style.background = 'transparent';
+    closeBtn.style.border = 'none';
+    closeBtn.style.fontSize = '2em';
+    closeBtn.style.color = '#2050b3';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.transition = 'color 0.2s';
+    closeBtn.addEventListener('mouseenter',()=>closeBtn.style.color='#f44336');
+    closeBtn.addEventListener('mouseleave',()=>closeBtn.style.color='#2050b3');
+    closeBtn.onclick = function() {
+        newOverlay.style.display = 'none';
+    };
+    modal.appendChild(closeBtn);
+
+    // header
+    const header = document.createElement('div');
+    header.style.padding = '24px 0 12px 0';
+    header.style.textAlign = 'center';
+    header.style.fontWeight = 'bold';
+    header.style.fontSize = '1.5em';
+    header.style.color = '#2050b3';
+    header.innerText = 'Chatbot';
+    modal.appendChild(header);
+
+    // zona mesaje
+    const messages = document.createElement('div');
+    messages.id = 'chatbot-messages';
+    messages.style.flex = '1';
+    messages.style.overflowY = 'auto';
+    messages.style.padding = '0 24px 12px 24px';
+    messages.style.background = '#f8f9fa';
+    messages.style.borderRadius = '8px';
+    messages.style.marginBottom = '12px';
+    modal.appendChild(messages);
+
+    // zona input
+    const inputArea = document.createElement('div');
+    inputArea.style.display = 'flex';
+    inputArea.style.padding = '16px 24px 24px 24px';
+    inputArea.style.background = '#fff';
+    inputArea.style.borderTop = '1px solid #e0e0e0';
+
+    let isRomanian = /[ăâîșțĂÂÎȘȚ]/.test(document.body.innerText);
+    let btnText = isRomanian ? 'Trimite' : 'Send';
+    let placeholderText = isRomanian ? 'Scrie un mesaj...' : 'Type a message...';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'chatbot-input';
+    input.placeholder = placeholderText;
+    input.style.flex = '1';
+    input.style.padding = '10px 14px';
+    input.style.fontSize = '1em';
+    input.style.border = '1px solid #2050b3';
+    input.style.borderRadius = '6px';
+    input.style.marginRight = '12px';
+    input.style.outline = 'none';
+
+    const sendBtn = document.createElement('button');
+    sendBtn.innerText = btnText;
+    sendBtn.style.background = '#2050b3';
+    sendBtn.style.color = '#fff';
+    sendBtn.style.border = 'none';
+    sendBtn.style.borderRadius = '6px';
+    sendBtn.style.padding = '10px 18px';
+    sendBtn.style.fontWeight = 'bold';
+    sendBtn.style.fontSize = '1em';
+    sendBtn.style.cursor = 'pointer';
+    sendBtn.style.transition = 'background 0.2s';
+    sendBtn.addEventListener('mouseenter',()=>sendBtn.style.background='#357ae8');
+    sendBtn.addEventListener('mouseleave',()=>sendBtn.style.background='#2050b3');
+
+    inputArea.appendChild(input);
+    inputArea.appendChild(sendBtn);
+    modal.appendChild(inputArea);
+
+    newOverlay.appendChild(modal);
+    document.body.appendChild(newOverlay);
+
+    setTimeout(()=>input.focus(), 100);
+
+    newOverlay.addEventListener('click', function(e) {
+        if (e.target === newOverlay) newOverlay.style.display = 'none';
+    });
+
+    // trimitere mesaj cu enter/click
+    function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+        addMessage('user', text);
+        input.value = '';
+        const loadingId = 'chatbot-loading-' + Date.now();
+        addLoadingMessage(loadingId);
+        // trimitere la backend
+        fetch('/api/chatbot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        })
+        .then(async r => {
+            if (!r.ok) {
+                const err = await r.json().catch(() => ({}));
+                throw new Error(err.error || 'Eroare la server');
+            }
+            return r.json();
+        })
+        .then(data => {
+            replaceLoadingMessage(loadingId, data.reply || '(Fără răspuns)');
+        })
+        .catch(err => {
+            replaceLoadingMessage(loadingId, 'Eroare: ' + err.message);
+        });
+    }
+
+    function addLoadingMessage(id) {
+        const msg = document.createElement('div');
+        msg.className = 'chatbot-msg chatbot-msg-bot chatbot-loading';
+        msg.id = id;
+        msg.innerHTML = '<span class="chatbot-dots"><span>.</span><span>.</span><span>.</span></span>';
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+    // inlocuim "..." cu raspunsul real
+    function replaceLoadingMessage(id, text) {
+        const msg = document.getElementById(id);
+        if (msg) {
+            msg.classList.remove('chatbot-loading');
+            msg.innerText = text;
+        }
+    }
+
+    // pentru a adauga mesaje in chat
+    function addMessage(role, text) {
+        const msg = document.createElement('div');
+        msg.className = 'chatbot-msg chatbot-msg-' + role;
+        msg.innerText = text;
+        msg.style.margin = '10px 0';
+        msg.style.padding = '10px 16px';
+        msg.style.borderRadius = '8px';
+        msg.style.maxWidth = '80%';
+        msg.style.wordBreak = 'break-word';
+        if (role === 'user') {
+            msg.style.background = '#2050b3';
+            msg.style.color = '#fff';
+            msg.style.alignSelf = 'flex-end';
+            msg.style.marginLeft = '20%';
+        } else {
+            msg.style.background = '#e9f0ff';
+            msg.style.color = '#222';
+            msg.style.alignSelf = 'flex-start';
+            msg.style.marginRight = '20%';
+        }
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    sendBtn.onclick = sendMessage;
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+}
+
+const chatbotBtn = document.getElementById('startChatBtn');
+if (chatbotBtn) {
+    chatbotBtn.addEventListener('click', createChatbotModal);
+} 
