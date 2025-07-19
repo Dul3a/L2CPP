@@ -373,12 +373,15 @@ document.addEventListener('DOMContentLoaded', function() {
 }); 
 
 // === CHATBOT ===
-function createChatbotModal() {
+function createChatbotModal(prefillText) {
     const overlay = document.getElementById('chatbot-modal-overlay');
     if (overlay) {
         overlay.style.display = 'flex';
         const input = overlay.querySelector('#chatbot-input');
-        if (input) setTimeout(()=>input.focus(), 100);
+        if (input) {
+            if (prefillText) input.value = prefillText;
+            setTimeout(()=>input.focus(), 100);
+        }
         return;
     }
     
@@ -471,6 +474,9 @@ function createChatbotModal() {
     input.style.borderRadius = '6px';
     input.style.marginRight = '12px';
     input.style.outline = 'none';
+    if (prefillText) {
+        input.value = prefillText;
+    }
 
     const sendBtn = document.createElement('button');
     sendBtn.innerText = btnText;
@@ -578,5 +584,88 @@ function createChatbotModal() {
 
 const chatbotBtn = document.getElementById('startChatBtn');
 if (chatbotBtn) {
-    chatbotBtn.addEventListener('click', createChatbotModal);
+    chatbotBtn.addEventListener('click', function() { createChatbotModal(); });
 } 
+
+// === BUTON CONTEXTUAL PENTRU SELECTIE ===
+(function() {
+    let selectionBtn = null;
+    let selectionTimeout = null;
+    let lastSelectedText = '';
+
+    function removeSelectionBtn() {
+        if (selectionBtn) {
+            selectionBtn.remove();
+            selectionBtn = null;
+        }
+    }
+
+    function showSelectionBtn(rect) {
+        removeSelectionBtn();
+        selectionBtn = document.createElement('button');
+        selectionBtn.className = 'selection-chatbot-btn';
+        let isRomanian = /[ăâîșțĂÂÎȘȚ]/.test(document.body.innerText);
+        selectionBtn.title = (typeof isRomanian !== 'undefined' && !isRomanian)
+            ? 'Ask the chatbot about the selected text'
+            : 'Întreabă chatbotul despre textul selectat';
+        selectionBtn.innerHTML = '<span class="selection-chatbot-icon"></span>';
+        selectionBtn.style.position = 'absolute';
+        selectionBtn.style.zIndex = '4000';
+        selectionBtn.style.top = (window.scrollY + rect.bottom + 5) + 'px';
+        selectionBtn.style.left = (window.scrollX + rect.right + 5) + 'px';
+        selectionBtn.style.padding = '6px';
+        selectionBtn.style.borderRadius = '50%';
+        selectionBtn.style.background = '#90caf9'; 
+        selectionBtn.style.border = 'none';
+        selectionBtn.style.boxShadow = '0 2px 8px rgba(32,80,179,0.15)';
+        selectionBtn.style.cursor = 'pointer';
+        selectionBtn.style.display = 'flex';
+        selectionBtn.style.alignItems = 'center';
+        selectionBtn.style.justifyContent = 'center';
+        selectionBtn.style.width = '36px';
+        selectionBtn.style.height = '36px';
+        selectionBtn.style.color = '#fff';
+        selectionBtn.style.fontSize = '1.2em';
+        selectionBtn.style.transition = 'background 0.2s';
+        selectionBtn.onmouseenter = function() { selectionBtn.style.background = '#b6e0fe'; };
+        selectionBtn.onmouseleave = function() { selectionBtn.style.background = '#90caf9'; };
+
+        document.body.appendChild(selectionBtn);
+
+        selectionBtn.onclick = function(e) {
+            e.stopPropagation();
+            if (typeof createChatbotModal === 'function') {
+                createChatbotModal(lastSelectedText);
+            }
+            removeSelectionBtn();
+        };
+    }
+
+    document.addEventListener('selectionchange', function() {
+        clearTimeout(selectionTimeout);
+        removeSelectionBtn();
+        const sel = window.getSelection();
+        if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+            lastSelectedText = '';
+            return;
+        }
+        lastSelectedText = sel.toString().trim();
+        // sa dureze un pic inainte sa apara butonul
+        selectionTimeout = setTimeout(function() {
+            const range = sel.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            if (rect.width === 0 && rect.height === 0) return;
+            showSelectionBtn(rect);
+        }, 1200);
+    });
+
+    // ascunde butonul daca dai click in alta parte
+    document.addEventListener('mousedown', function(e) {
+        if (selectionBtn && !selectionBtn.contains(e.target)) {
+            removeSelectionBtn();
+        }
+    });
+    // ascunde la scroll/resize
+    window.addEventListener('scroll', removeSelectionBtn);
+    window.addEventListener('resize', removeSelectionBtn);
+})(); 

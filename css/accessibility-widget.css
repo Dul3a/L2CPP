@@ -532,3 +532,43 @@ body.reading-guide {
     z-index: 10;
 }
 }
+
+/* === Buton contextual selectie pentru chatbot === */
+.selection-chatbot-btn {
+    position: absolute;
+    z-index: 4000;
+    padding: 6px;
+    border-radius: 50%;
+    background: #1875c2; 
+    border: none;
+    box-shadow: 0 2px 8px rgba(32,80,179,0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    font-size: 1.2em;
+    transition: background 0.2s;
+    opacity: 0;
+    animation: chatbot-fadein 0.5s forwards;
+}
+
+@keyframes chatbot-fadein {
+    from { opacity: 0; transform: scale(0.85);}
+    to   { opacity: 1; transform: scale(1);}
+}
+.selection-chatbot-btn:hover {
+    background: #b6e0fe; 
+}
+.selection-chatbot-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    background-image: url('../Images & Videos/chatbot_textselectionimage.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
