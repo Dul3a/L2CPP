@@ -33,7 +33,14 @@ you'll need to create an `.env` file and write the following inside the file:
 OPENAI_API_KEY=YOUR_API_KEY
 PORT=3000
 ```
-- Now you need to install the required dependencies. Open the terminal and write:
+- Now you need to install the required dependencies. You'll need to have Node.js installed on your PC to use the following commands.
+You can check if you have it already installed opening the terminal and writing these commands:
+```batch
+nove -v
+npm -v
+```
+- If you don't have Node.js installed, download the installer from the official Node.js website (nodejs.org) and follow the on-screen instructions
+- After you are done with installing Node.js, open the terminal and write:
 ```bash
 npm install express
 ```
@@ -48,4 +55,5 @@ node server.js
 - Now you can access "http://localhost:3000" and you are good to go!
 
 ⚠️Attention! The API key from OPENAI is not free to use, if you want you can search for a free AI API key on the internet, but for a better experience I suggest you use the online version of the website instead of running it locally: https://l2cpp.vercel.app/
+
 You can still run it locally without a problem, but the Summarizer and Chatbot won't work properly without an activated API key.
