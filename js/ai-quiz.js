@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
     submitBtn.className = 'quiz-submit-btn';
-    submitBtn.textContent = 'Trimite';
+    submitBtn.textContent = (lang === 'en') ? 'Send' : 'Trimite';
 
     form.appendChild(submitBtn);
     quizContainer.appendChild(form);
