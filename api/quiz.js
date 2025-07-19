@@ -17,9 +17,9 @@ export default async function handler(req, res) {
         const lang = detectLang(message);
         let prompt;
         if (lang === 'ro') {
-            prompt = `Generează un test de maximum 10 întrebări despre: ${message}. Pentru fiecare întrebare, oferă 3 variante de răspuns (A, B, C) și marchează răspunsul corect. Returnează structurat ca JSON, de forma: [ { "question": "...", "options": ["A ...", "B ...", "C ..."], "correct": "A" }, ... ]. Nu adăuga explicații suplimentare, doar JSON-ul.`;
+            prompt = `Generează un test de maximum 10 întrebări despre: ${message}. Testul trebuie să fie numai despre C++. Pentru fiecare întrebare, oferă 3 variante de răspuns (A, B, C) și marchează răspunsul corect. Returnează structurat ca JSON, de forma: [ { "question": "...", "options": ["A ...", "B ...", "C ..."], "correct": "A" }, ... ]. Nu adăuga explicații suplimentare, doar JSON-ul.`;
         } else {
-            prompt = `Generate a quiz with up to 10 questions about: ${message}. For each question, provide 3 answer options (A, B, C) and mark the correct answer. Return the result as JSON, in the format: [ { "question": "...", "options": ["A ...", "B ...", "C ..."], "correct": "A" }, ... ]. Do not add any explanations, only the JSON.`;
+            prompt = `Generate a quiz with up to 10 questions about: ${message}. The quiz should be about C++ only. For each question, provide 3 answer options (A, B, C) and mark the correct answer. Return the result as JSON, in the format: [ { "question": "...", "options": ["A ...", "B ...", "C ..."], "correct": "A" }, ... ]. Do not add any explanations, only the JSON.`;
         }
         if (!process.env.OPENAI_API_KEY) {
             return res.status(500).json({ error: 'API key nu este configurată' });
