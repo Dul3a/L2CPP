@@ -6,7 +6,7 @@ async function generateSummary(text) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ text })
+            body: JSON.stringify({ text, pagePath: window.location.pathname }) 
         });
         
         console.log('Response status:', response.status);
